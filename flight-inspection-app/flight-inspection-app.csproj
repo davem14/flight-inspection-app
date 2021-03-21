@@ -55,6 +55,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="view\details.xaml.cs">
+      <DependentUpon>details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\Joystick.xaml.cs">
+      <DependentUpon>Joystick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\playBar.xaml.cs">
+      <DependentUpon>playBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\screen.xaml.cs">
+      <DependentUpon>screen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="model\Flight_Model.cs" />
+    <Compile Include="vm\VM_details.cs" />
+    <Compile Include="vm\VM_Joystick.cs" />
+    <Compile Include="vm\VM_PlayBar.cs" />
+    <Compile Include="vm\VM_Screen.cs" />
+    <Page Include="view\details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\Joystick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\playBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\screen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,5 +127,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
