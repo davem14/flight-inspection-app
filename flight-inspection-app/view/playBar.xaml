@@ -47,10 +47,10 @@
 
             <Label Grid.Column="14" Content="Play speed" FontSize="15"/>
             <TextBox Grid.Column="16"/>
-            <Label Grid.Column="18" Content="Time" FontSize="15"/>
+            <Label Grid.Column="18" Content="{Binding VM_Step}" FontSize="15"/>
 
 
-            <Slider Grid.Row="2" Grid.ColumnSpan="19" Minimum="0" Maximum="{Binding VM_Limit}" />
+            <Slider Grid.Row="2" Grid.ColumnSpan="19" Minimum="0" Maximum="{Binding VM_Range}" />
 
         </Grid>
     </Border>

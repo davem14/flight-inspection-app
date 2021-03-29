@@ -11,8 +11,11 @@ namespace flight_inspection_app.model
     {
         public delegate void PlayAction();
 
-        public Flight_Model()
+        int numberOfLines;
+        public Flight_Model(List<string> file)
         {
+            this.file = file;
+            numberOfLines = file.Count;
             step = 0;
             speed = 1;
         }
@@ -27,6 +30,8 @@ namespace flight_inspection_app.model
             {
                 if (value >= 0 /*&& value <=MAXVALUE*/)
                 {
+                    if (Equals(this.step, numberOfLines - 1) && !Equals(value, numberOfLines))
+                        eventWaitHandle.Set();
                     step = value;
                     this.NotifyPropertyChanged("Step");
                 }
@@ -43,8 +48,6 @@ namespace flight_inspection_app.model
             {
                 if (value >= 0 /*&& value <=MAXSPEED*/)
                 {
-                    if (Equals(this.step, numberOfLines - 1) && !Equals(value, numberOfLines))
-                        eventWaitHandle.Set();
                     this.speed = value;
                     if (this.speed != 0 && stop == false)
                         eventWaitHandle.Set();
@@ -124,17 +127,10 @@ namespace flight_inspection_app.model
 
         // the file (list of lines)
         private List<string> file;
-        int numberOfLines;
-        // set some file to run
-        public void setFile(List<string> file)
-        {
-            this.file = file;
-            numberOfLines = file.Count;
-        }
 
-        public int getNumberLines()
+        public int range()
         {
-            return numberOfLines;
+            return numberOfLines - 1;
         }
     }
 }

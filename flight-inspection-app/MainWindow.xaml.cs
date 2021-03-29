@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using flight_inspection_app.model;
+using flight_inspection_app.view;
+using flight_inspection_app;
+using flight_inspection_app.vm;
 
 namespace flight_inspection_app
 {
@@ -20,9 +24,18 @@ namespace flight_inspection_app
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        Flight_Model model;
+        //FileHandler fileHandler;
+        public MainWindow(Flight_Model model)
         {
             InitializeComponent();
+            this.model = model;
+            loadedUserControl();
+        }
+
+        private void loadedUserControl()
+        {
+            playBar.Children.Add(new playBar(model));
         }
     }
 }

@@ -18,7 +18,7 @@ namespace flight_inspection_app.vm
         public VM_PlayBar(Flight_Model model)
         {
             this.model = model;
-            this.range = model.getNumberLines();
+            this.range = model.range();
             model.PropertyChanged +=
                 delegate (object sender, PropertyChangedEventArgs e) { this.NotifyPropertyChanged("VM_" + e.PropertyName); };
         }
@@ -26,7 +26,7 @@ namespace flight_inspection_app.vm
         public int VM_Step { get { return this.model.Step; } }
         public float VM_Speed { get { return this.model.Speed; } }
 
-        public int VM_Limit
+        public int VM_Range
         {
             get { return range; }
         }
