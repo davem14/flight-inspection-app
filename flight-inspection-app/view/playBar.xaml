@@ -5,8 +5,53 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:flight_inspection_app.view"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="110" d:DesignWidth="600" Background="White">
+    <Border Padding="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="0" x:Name="t1"/>
+            <Button Grid.Column="2" x:Name="t2"/>
+            <Button Grid.Column="4" x:Name="t3"/>
+            <Button Grid.Column="6" x:Name="t4"/>
+            <Button Grid.Column="8" x:Name="t5"/>
+            <Button Grid.Column="10" x:Name="t6"/>
+            <Button Grid.Column="12" x:Name="t7"/>
+
+            <Label Grid.Column="14" Content="Play speed" FontSize="15"/>
+            <TextBox Grid.Column="16"/>
+            <Label Grid.Column="18" Content="Time" FontSize="15"/>
+
+
+            <Slider Grid.Row="2" Grid.ColumnSpan="19" Minimum="0" Maximum="{Binding VM_Limit}" />
+
+        </Grid>
+    </Border>
 </UserControl>
