@@ -1,64 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace flight_inspection_app.vm
 {
     class VM_Screen
     {
-        public static void project(int millisecsBetweenBroadcasts) {
-            // Establish the remote endpoint for the socket, using port 5400 on the local computer.
-            IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddr = ipHost.AddressList[0];
-            IPEndPoint FG_EndPoint = new IPEndPoint(ipAddr, 5400);
+        static void project(int millisecsBetweenBroadcasts)
+        {
+            // create a TCPClient object at the localhost on port 5400
+            TcpClient client = new TcpClient("localhost", 5400);
+            NetworkStream nwStream = client.GetStream();
+            StreamReader reader = new StreamReader("reg_flight.csv");
 
-            // Creation TCP/IP Socket using Socket Class Costructor
-            using (Socket fgSoc = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+            byte[] endl = Encoding.ASCII.GetBytes("\r\n");
+            string line;
+            while ((line = reader.ReadLine()) != null)
             {
-                try
-                {
-                    // Connect Socket to FG's endpoint
-                    fgSoc.Connect(FG_EndPoint);
-
-                    // print EndPoint information that we are connected to
-                    Console.WriteLine("Socket connected to -> {0} ", fgSoc.RemoteEndPoint.ToString());
-
-                    using (StreamReader reader = new StreamReader("reg_flight.csv"))
-                    {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            byte[] toSent = Encoding.ASCII.GetBytes(line);
-                            int bytesSent = fgSoc.Send(toSent);
-                            Thread.Sleep(millisecsBetweenBroadcasts);
-                        }
-                    }
-                }
-
-                // Manage of Socket's Exceptions
-                catch (ArgumentNullException ane)
-                {
-
-                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }
-
-                catch (SocketException se)
-                {
-
-                    Console.WriteLine("SocketException : {0}", se.ToString());
-                }
-
-                catch (Exception e)
-                {
-                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
-                }
+                byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(line);
+                nwStream.Write(bytesToSend, 0, bytesToSend.Length);
+                nwStream.Write(endl, 0, endl.Length);
+                Thread.Sleep(millisecsBetweenBroadcasts);
             }
+
+            nwStream.Close();
+            reader.Close();
+            client.Close();
         }
     }
 }
