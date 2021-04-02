@@ -6,52 +6,63 @@
              xmlns:local="clr-namespace:flight_inspection_app.view"
              mc:Ignorable="d" 
              d:DesignHeight="110" d:DesignWidth="600" Background="White">
-    <Border Padding="20">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="*"/>
+    <Border Padding="10">
+        <Border Padding="10" BorderThickness="1" BorderBrush="LightGray">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
 
-            </Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
 
-            <Button Grid.Column="0" x:Name="t1"/>
-            <Button Grid.Column="2" x:Name="t2"/>
-            <Button Grid.Column="4" x:Name="t3"/>
-            <Button Grid.Column="6" x:Name="t4"/>
-            <Button Grid.Column="8" x:Name="t5"/>
-            <Button Grid.Column="10" x:Name="t6"/>
-            <Button Grid.Column="12" x:Name="t7"/>
+                <Button Grid.Column="0" x:Name="t1"/>
+                <Button Grid.Column="2" x:Name="backwards" Click="backwards_Click">
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/backwards.png" Stretch="Fill" Width="26"/>
+                </Button>
+                <Button Grid.Column="4" x:Name="play" Click="play_Click" ToolTip="Play">
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/play.png" Stretch="Fill" Width="26"/>
+                </Button>
+                <Button Grid.Column="6" x:Name="pause" Click="pause_Click" ToolTip="Pause">
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/pause.png" Stretch="Fill" Width="26"/>
+                </Button>
+                <Button Grid.Column="8" x:Name="stop" Click="stop_Click" ToolTip="Stop">
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/stop.png" Stretch="Fill" Width="26"/>
+                </Button>
+                <Button Grid.Column="10" x:Name="forwards" Click="forwards_Click">
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/forwards.png" Stretch="Fill" Width="26"/>
+                </Button>
+                <Button Grid.Column="12" x:Name="t7"/>
 
-            <Label Grid.Column="14" Content="Play speed" FontSize="15"/>
-            <TextBox Grid.Column="16"/>
-            <Label Grid.Column="18" Content="{Binding VM_Step}" FontSize="15"/>
+                <Label Grid.Column="14" Content="Play speed" FontSize="15"/>
+                <TextBox Grid.Column="16" Text="{Binding VM_Speed}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+                <Label Grid.Column="18" Content="{Binding VM_Step}" FontSize="15"/>
 
+                <Slider Grid.Row="2" Grid.ColumnSpan="19" Minimum="0" Maximum="{Binding VM_Range}" Value="{Binding VM_Step, Mode=TwoWay}" />
 
-            <Slider Grid.Row="2" Grid.ColumnSpan="19" Minimum="0" Maximum="{Binding VM_Range}" />
-
-        </Grid>
+            </Grid>
+        </Border>
     </Border>
 </UserControl>

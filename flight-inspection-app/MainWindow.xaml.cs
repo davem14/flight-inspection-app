@@ -35,8 +35,15 @@ namespace flight_inspection_app
 
         private void loadedUserControl()
         {
+            VM_Screen temp = new VM_Screen(model);
             playBar.Children.Add(new playBar(model));
             details.Children.Add(new details(model));
+        }
+
+        private void Closing_Window(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.model.stopRun();
+            Application.Current.Shutdown();
         }
     }
 }

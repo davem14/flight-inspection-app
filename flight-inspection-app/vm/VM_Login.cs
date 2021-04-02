@@ -27,6 +27,8 @@ namespace flight_inspection_app.vm
             MainWindow mainWindow = new MainWindow(model);
             mainWindow.Show();
             model.start();
+            
+            
         }
     }
 

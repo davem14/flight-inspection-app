@@ -11,24 +11,30 @@ namespace flight_inspection_app.vm
     class VM_PlayBar : INotifyPropertyChanged
     {
         private Flight_Model model;
-        int range;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public VM_PlayBar(Flight_Model model)
         {
             this.model = model;
-            this.range = model.range();
             model.PropertyChanged +=
                 delegate (object sender, PropertyChangedEventArgs e) { this.NotifyPropertyChanged("VM_" + e.PropertyName); };
         }
 
-        public int VM_Step { get { return this.model.Step; } }
-        public float VM_Speed { get { return this.model.Speed; } }
+        public int VM_Step
+        {
+            get { return this.model.Step; }
+            set { this.model.Step = value; }
+        }
+        public float VM_Speed
+        {
+            get { return this.model.Speed; }
+            set { this.model.Speed = value; }
+        }
 
         public int VM_Range
         {
-            get { return range; }
+            get { return model.range(); }
         }
 
         public void play()
@@ -43,11 +49,11 @@ namespace flight_inspection_app.vm
         {
             model.Step = 0;
         }
-        public void Back()
+        public void backwards()
         {
             model.Step = model.Step - 100;
         }
-        public void Forward()
+        public void forwards()
         {
             model.Step = model.Step + 100;
         }

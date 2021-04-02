@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:flight_inspection_app"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900">
+        Title="MainWindow" Height="600" Width="900" Closing="Closing_Window">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -13,11 +13,12 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="playBar" Grid.Row="1" Grid.Column="1"/>
-        <Grid x:Name="details" Grid.Row="1" Grid.Column="2"/>
+        <Grid x:Name="playBar" Grid.Row="2" Grid.Column="1"/>
+        <Grid x:Name="details" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"/>
 
     </Grid>
 </Window>

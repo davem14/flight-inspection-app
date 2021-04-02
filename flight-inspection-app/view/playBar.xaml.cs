@@ -30,5 +30,30 @@ namespace flight_inspection_app.view
             DataContext = vm;
             // ...
         }
+
+        private void pause_Click(object sender, RoutedEventArgs e)
+        {
+            vm.pause();
+        }
+
+        private void play_Click(object sender, RoutedEventArgs e)
+        {
+            vm.play();
+        }
+
+        private void stop_Click(object sender, RoutedEventArgs e)
+        {
+            vm.stop();
+        }
+
+        private void backwards_Click(object sender, RoutedEventArgs e)
+        {
+            vm.backwards();
+        }
+
+        private void forwards_Click(object sender, RoutedEventArgs e)
+        {
+            vm.forwards();
+        }
     }
 }

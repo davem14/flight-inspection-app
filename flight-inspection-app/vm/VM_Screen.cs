@@ -7,31 +7,49 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.ComponentModel;
+using System.Reflection;
+using flight_inspection_app.model;
 
 namespace flight_inspection_app.vm
 {
     class VM_Screen
     {
-        static void project(int millisecsBetweenBroadcasts)
+        Flight_Model model;
+        TcpClient client;
+        NetworkStream nwStream;
+        byte[] endl;
+
+
+        public VM_Screen(Flight_Model model)
         {
-            // create a TCPClient object at the localhost on port 5400
-            TcpClient client = new TcpClient("localhost", 5400);
-            NetworkStream nwStream = client.GetStream();
-            StreamReader reader = new StreamReader("reg_flight.csv");
-
-            byte[] endl = Encoding.ASCII.GetBytes("\r\n");
-            string line;
-            while ((line = reader.ReadLine()) != null)
+            this.model = model;
+            try
             {
-                byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(line);
-                nwStream.Write(bytesToSend, 0, bytesToSend.Length);
-                nwStream.Write(endl, 0, endl.Length);
-                Thread.Sleep(millisecsBetweenBroadcasts);
-            }
+                // create a TCPClient object at the localhost on port 5400
+                this.client = new TcpClient("localhost", 5400);
+                nwStream = client.GetStream();
 
-            nwStream.Close();
-            reader.Close();
-            client.Close();
+                endl = Encoding.ASCII.GetBytes("\r\n");
+
+                model.PropertyChanged +=
+                   delegate (object sender, PropertyChangedEventArgs e)
+                   {
+                       byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(GetPropertyValue(model, e.PropertyName).ToString());
+                       nwStream.Write(bytesToSend, 0, bytesToSend.Length);
+                       nwStream.Write(endl, 0, endl.Length);
+                   };
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        public static object GetPropertyValue(object source, string propertyName)
+        {
+            PropertyInfo property = source.GetType().GetProperty(propertyName);
+            return property.GetValue(source, null);
         }
     }
 }

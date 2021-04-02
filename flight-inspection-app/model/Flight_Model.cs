@@ -77,6 +77,7 @@ namespace flight_inspection_app.model
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        bool run = true;
 
         EventWaitHandle eventWaitHandle = new EventWaitHandle(true, EventResetMode.AutoReset);
 
@@ -84,12 +85,15 @@ namespace flight_inspection_app.model
         {
             new Thread(delegate ()
             {
-                while (true)
+                while (run)
                 {
                     // updats the current line and step
-                    Line = file[this.step];
+                    
                     if (this.step < numberOfLines - 1)
+                    {
+                        Line = file[this.step];
                         Step = this.step + 1;
+                    }
                     Console.WriteLine(this.step);
 
                     if (Equals(this.step, numberOfLines - 1))
@@ -131,6 +135,16 @@ namespace flight_inspection_app.model
         public int range()
         {
             return numberOfLines - 1;
+        }
+
+        public void stopRun()
+        {
+            run = false;
+        }
+
+        public void setFile(List<string> file)
+        {
+            this.file = file;
         }
     }
 }

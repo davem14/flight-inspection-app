@@ -55,13 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="view\details.xaml.cs">
-      <DependentUpon>details.xaml</DependentUpon>
+    <Compile Include="MainWindow.xaml.cs" />
+    <Compile Include="view\details.xaml.cs" />
+    <Compile Include="view\graph.xaml.cs">
+      <DependentUpon>graph.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="view\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\playBar.xaml.cs">
@@ -72,11 +74,20 @@
     </Compile>
     <Compile Include="model\Flight_Model.cs" />
     <Compile Include="vm\VM_details.cs" />
+    <Compile Include="vm\VM_Graph.cs" />
     <Compile Include="vm\VM_Joystick.cs" />
-    <Compile Include="VM_Login.cs" />
+    <Compile Include="vm\VM_Login.cs" />
     <Compile Include="vm\VM_PlayBar.cs" />
     <Compile Include="vm\VM_Screen.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="view\details.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\graph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,7 +95,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Login.xaml">
+    <Page Include="view\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,16 +107,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -135,6 +138,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="view\icon player\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\icon player\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\icon player\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\icon player\forwards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\icon player\backwards.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,21 +5,48 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:flight_inspection_app.view"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBox x:Name="he" HorizontalAlignment="Left" Margin="175,26,0,0" Text="height" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Height="26"/>
+             d:DesignHeight="150" d:DesignWidth="400" Background="White">
+    <Border Padding="10">
+        <Border Padding="10" BorderBrush="LightGray" BorderThickness="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <TextBox x:Name="sp" HorizontalAlignment="Left" Margin="175,63,0,0" Text="speed" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Height="26"/>
-        <TextBox x:Name="di" HorizontalAlignment="Left" Margin="175,97,0,0" Text="direction" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Height="26"/>
-        <TextBox x:Name="pi" HorizontalAlignment="Left" Margin="175,134,0,0" Text="pitch" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Height="26"/>
-        <TextBox x:Name="ro" HorizontalAlignment="Left" Margin="175,171,0,0" Text="roll" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Height="26"/>
-        <TextBox x:Name="ya" HorizontalAlignment="Left" Margin="175,208,0,0" Text="yaw" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Height="26"/>
-        <Label Content="{Binding VM_Height}" HorizontalAlignment="Left" Margin="243,26,0,0" VerticalAlignment="Top" Height="26" Width="66" Foreground="#FF0A0101" Background="#FFF1F1F1"/>
-        <Label Content="{Binding VM_AirSpeed}" HorizontalAlignment="Left" Margin="243,63,0,0" VerticalAlignment="Top" Height="26" Width="66" Foreground="#FF0A0101" Background="#FFF1F1F1"/>
-        <Label Content="{Binding VM_FlightDirection}" HorizontalAlignment="Left" Margin="243,97,0,0" VerticalAlignment="Top" Height="26" Width="66" Foreground="#FF0A0101" Background="#FFF1F1F1"/>
-        <Label Content="{Binding VM_Pitch}" HorizontalAlignment="Left" Margin="243,134,0,0" VerticalAlignment="Top" Height="26" Width="66" Foreground="#FF0A0101" Background="#FFF1F1F1"/>
-        <Label Content="{Binding VM_Roll}" HorizontalAlignment="Left" Margin="243,171,0,0" VerticalAlignment="Top" Height="26" Width="66" Foreground="#FF0A0101" Background="#FFF1F1F1"/>
-        <Label Content="{Binding VM_Yaw}" HorizontalAlignment="Left" Margin="243,208,0,0" VerticalAlignment="Top" Height="26" Width="66" Foreground="#FF0A0101" Background="#FFF1F1F1"/>
+                <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Fill="#FFF1F1F1"/>
+                <Label x:Name="he" Grid.Row="0" Grid.Column="0" Content=" Height:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium"/>
+                <Label Content="{Binding VM_Height}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="14" />
 
-    </Grid>
+                <Rectangle Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Fill="#FFE2E5E6"/>
+                <Label x:Name="sp" Grid.Row="0" Grid.Column="2" Content=" Speed:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium"/>
+                <Label Content="{Binding VM_AirSpeed}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="14" />
+
+                <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Fill="#FFE2E5E6"/>
+                <Label x:Name="di" Grid.Row="1" Grid.Column="0" Content=" Direction:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium"/>
+                <Label Content="{Binding VM_FlightDirection}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="14" />
+
+                <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Fill="#FFF1F1F1"/>
+                <Label x:Name="pi" Grid.Row="1" Grid.Column="2" Content=" Pitch:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium"/>
+                <Label Content="{Binding VM_Pitch}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="14" />
+
+                <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Fill="#FFF1F1F1"/>
+                <Label x:Name="ro" Grid.Row="2" Grid.Column="0" Content=" Roll:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium"/>
+                <Label Content="{Binding VM_Roll}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="14" />
+
+                <Rectangle Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Fill="#FFE2E5E6"/>
+                <Label x:Name="ya" Grid.Row="2" Grid.Column="2" Content=" Yaw:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium"/>
+                <Label Content="{Binding VM_Yaw}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="14" />
+                
+            </Grid>
+        </Border>
+    </Border>
+
 </UserControl>
