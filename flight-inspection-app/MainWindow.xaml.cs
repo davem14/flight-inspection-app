@@ -36,6 +36,7 @@ namespace flight_inspection_app
         private void loadedUserControl()
         {
             playBar.Children.Add(new playBar(model));
+            details.Children.Add(new details(model));
         }
     }
 }
