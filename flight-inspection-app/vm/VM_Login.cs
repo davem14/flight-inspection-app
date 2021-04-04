@@ -21,10 +21,10 @@ namespace flight_inspection_app.vm
             }
         public void start()
         {
-            FileHandler flieHandler = new FileHandler(fileName);
-            Flight_Model model = new Flight_Model(flieHandler.getFile());
+            FileHandler fileHandler = new FileHandler(fileName);
+            Flight_Model model = new Flight_Model(fileHandler.getFile());
 
-            MainWindow mainWindow = new MainWindow(model);
+            MainWindow mainWindow = new MainWindow(model, fileHandler);
             mainWindow.Show();
             model.start();
             
@@ -32,7 +32,7 @@ namespace flight_inspection_app.vm
         }
     }
 
-    class FileHandler
+    public class FileHandler
     {
         List<string> file;
         public FileHandler(string fileName)

@@ -25,11 +25,13 @@ namespace flight_inspection_app
     public partial class MainWindow : Window
     {
         Flight_Model model;
+        FileHandler fileHandler;
         //FileHandler fileHandler;
-        public MainWindow(Flight_Model model)
+        public MainWindow(Flight_Model model, FileHandler fileHandler)
         {
             InitializeComponent();
             this.model = model;
+            this.fileHandler = fileHandler;
             loadedUserControl();
         }
 
@@ -38,6 +40,7 @@ namespace flight_inspection_app
             VM_Screen temp = new VM_Screen(model);
             playBar.Children.Add(new playBar(model));
             details.Children.Add(new details(model));
+            graph.Children.Add(new graph(model, fileHandler));
         }
 
         private void Closing_Window(object sender, System.ComponentModel.CancelEventArgs e)
