@@ -20,7 +20,8 @@ namespace flight_inspection_app.view
     /// </summary>
     public partial class Login : Window
     {
-        string fileName;
+        string CsvFileName;
+        string XmlFileName;
         VM_Login login;
         public Login()
         {
@@ -28,24 +29,43 @@ namespace flight_inspection_app.view
             login = new VM_Login();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click1(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             Nullable<bool> result = dlg.ShowDialog();
 
             if (result == true)
             {
-                text.Text = dlg.FileName;
+                pathCSV.Text = dlg.FileName;
                 _continue.IsEnabled = true;
-                fileName = dlg.FileName;
+                CsvFileName = dlg.FileName;
             }
         }
 
         private void _continue_Click(object sender, RoutedEventArgs e)
         {
-            login.VM_FileName = fileName;
+            login.VM_CsvFileName = CsvFileName;
+            login.VM_XmlFileName = XmlFileName;
             login.start();
             Hide();
+        }
+
+        private void Load(object sender, RoutedEventArgs e)
+        {
+            configuration.Text = "--generic=socket,in,10,127.0.0.1,5400,tcp,XXXXXXXXXX" + Environment.NewLine + "--fdm=null";
+        }
+
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+
+            if (result == true)
+            {
+                pathXML.Text = dlg.FileName;
+                _continue.IsEnabled = true;
+                XmlFileName = dlg.FileName;
+            }
         }
     }
 }

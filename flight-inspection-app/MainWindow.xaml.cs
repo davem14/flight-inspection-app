@@ -16,6 +16,7 @@ using flight_inspection_app.model;
 using flight_inspection_app.view;
 using flight_inspection_app;
 using flight_inspection_app.vm;
+using flight_inspection_app.vm.reading_files_classes;
 
 namespace flight_inspection_app
 {
@@ -25,13 +26,14 @@ namespace flight_inspection_app
     public partial class MainWindow : Window
     {
         Flight_Model model;
-        FileHandler fileHandler;
+        XmlHandler xmlHandler;
+
         //FileHandler fileHandler;
-        public MainWindow(Flight_Model model, FileHandler fileHandler)
+        public MainWindow(Flight_Model model, XmlHandler xmlHandler)
         {
             InitializeComponent();
             this.model = model;
-            this.fileHandler = fileHandler;
+            this.xmlHandler = xmlHandler;
             loadedUserControl();
         }
 
@@ -40,7 +42,7 @@ namespace flight_inspection_app
             VM_Screen temp = new VM_Screen(model);
             playBar.Children.Add(new playBar(model));
             details.Children.Add(new details(model));
-            graph.Children.Add(new graph(model, fileHandler));
+            graph.Children.Add(new graph(model, xmlHandler));
         }
 
         private void Closing_Window(object sender, System.ComponentModel.CancelEventArgs e)

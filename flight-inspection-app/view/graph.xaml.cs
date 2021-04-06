@@ -1,11 +1,14 @@
 ﻿using flight_inspection_app.model;
 using flight_inspection_app.vm;
+using flight_inspection_app.vm.reading_files_classes;
 using OxyPlot;
 using OxyPlot.Wpf;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,49 +29,33 @@ namespace flight_inspection_app.view
     public partial class graph : UserControl
     {
         private VM_Graph vm;
-        public graph(Flight_Model model, FileHandler fileHandler)
+        public graph(Flight_Model model, XmlHandler xmlHandler)
         {
             InitializeComponent();
-            vm = new VM_Graph(model, fileHandler);
+            vm = new VM_Graph(model, xmlHandler);
             DataContext = vm;
-
-            this.listBox1.ItemsSource = vm.Chunks;
-            //this.listBox2.ItemsSource = vm.Chunks;
-
-
-            LineAnnotation annotation = new LineAnnotation();
-            annotation.Slope = 1;
-            annotation.Intercept = 1;
-            annotation.LineStyle = LineStyle.Solid;
-            regressionLine.Annotations.Add(annotation);
-
-
         }
 
-        string firstCategory;
-        string secondCategory;
-        bool firstIsSelected = false;
-        bool secondIsSelected = false;
-
-        private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void listBoxCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (listBox1.SelectedItem != null)
+            if (listBoxCategory.SelectedItem != null)
             {
-                chartFirstCategory.Title = ((Chunk)listBox1.SelectedItem).Name;
+                //chartFirstCategory.Title = ((Chunk)listBoxCategory.SelectedItem).Name;
 
-                int index = listBox1.SelectedIndex;
-                if(index == 42)
-                {
-                    Console.WriteLine("hello");
-                }
+                vm.IndexCategory = listBoxCategory.SelectedIndex;
 
-                vm.IndexCategory = index;
+                chartFirstCategory.Title = vm.Chunks[vm.IndexCategory].Name;
+                chartSecondCategory.Title = vm.secondCategory(vm.IndexCategory);
 
-                //this.vm.PointsFirstCategory = vm.getDataPoint(vm.Map[index]);
+                regressionLine.Title = vm.TitleRegressionLine;
+                description.Text = "  " + vm.DescriptionOfCorrelation;
+                description.Foreground = vm.ColorOfDescription;
+
+
+                vm.PointsStaticRegression = vm.getPointsStaticRegression(vm.IndexCategory);
+                regressionLine.Annotations.Clear();
+                regressionLine.Annotations.Add(vm.lineAnnotation(vm.IndexCategory));
             }
-
-            firstIsSelected = true;
-
         }
     }
 

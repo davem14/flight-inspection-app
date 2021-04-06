@@ -81,9 +81,10 @@
       <DependentUpon>screen.xaml</DependentUpon>
     </Compile>
     <Compile Include="model\Flight_Model.cs" />
-    <Compile Include="vm\openXML\OpenXML.xaml.cs">
-      <DependentUpon>OpenXML.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="vm\correlation_classes\Correlation.cs" />
+    <Compile Include="vm\reading_files_classes\FileHandler.cs" />
+    <Compile Include="vm\reading_files_classes\XmlHandler.cs" />
+    <Compile Include="vm\statistics\Statistics.cs" />
     <Compile Include="vm\VM_details.cs" />
     <Compile Include="vm\VM_Graph.cs" />
     <Compile Include="vm\VM_Joystick.cs" />
@@ -122,10 +123,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="vm\openXML\OpenXML.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -168,6 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="view\icon player\backwards.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\photo_additional_settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

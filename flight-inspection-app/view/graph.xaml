@@ -31,6 +31,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
 
                     <oxy:Plot x:Name="chartFirstCategory" Grid.Row="0" Grid.Column="0" TitleFontSize="12" TitleFontWeight="Light">
@@ -45,24 +46,26 @@
                         </oxy:Plot.Series>
                     </oxy:Plot>
 
-                    <oxy:Plot x:Name="regressionLine" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Title="The regression line between -- and --" TitleFontSize="12" TitleFontWeight="Light">
+                    <oxy:Plot x:Name="regressionLine" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Title=" " TitleFontSize="12" TitleFontWeight="Light">
                         <oxy:Plot.Series>
-                            <oxy:LineSeries ItemsSource="{Binding Points}" MarkerType="Circle" MarkerSize="0.5" LineStyle="None" Color="Black"/>
+                            <oxy:LineSeries ItemsSource="{Binding PointsStaticRegression}" MarkerType="Circle" MarkerSize="1" LineStyle="None" Color="LightGray"/>
+                            <oxy:LineSeries ItemsSource="{Binding PointsDynamicRegression}" MarkerType="Circle" MarkerSize="1" LineStyle="None" Color="Red"/>
+
                         </oxy:Plot.Series>
                     </oxy:Plot>
 
+                    <TextBlock x:Name="description" Grid.Row="2" Grid.ColumnSpan="2" FontWeight="Bold"/>
 
                 </Grid>
 
 
                 <Label x:Name="label1" Grid.Column="2" Grid.Row="0" Content=""/>
 
-
-
+                
                 <Label Grid.Column="0" Grid.Row="0" Content="Choose first category" FontWeight="Medium" HorizontalContentAlignment="Center"/>
 
                 <Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="4">
-                    <ListBox Name="listBox1" SelectionChanged="listBox1_SelectionChanged">
+                    <ListBox Name="listBoxCategory" SelectionChanged="listBoxCategory_SelectionChanged" ItemsSource ="{Binding Chunks}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Name}"/>

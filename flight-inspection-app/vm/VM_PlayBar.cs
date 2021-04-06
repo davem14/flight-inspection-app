@@ -19,6 +19,31 @@ namespace flight_inspection_app.vm
             this.model = model;
             model.PropertyChanged +=
                 delegate (object sender, PropertyChangedEventArgs e) { this.NotifyPropertyChanged("VM_" + e.PropertyName); };
+
+            model.PropertyChanged +=
+                delegate (object sender, PropertyChangedEventArgs e)
+                {
+                    if (Equals(e.PropertyName, "Step") && (model.Step % 10) == 0)
+                    {
+                        if (minuts == 59)
+                        {
+                            minuts = 0;
+                            hours = 0;
+                        }
+                        if (seconds == 59)
+                        {
+                            seconds = 0;
+                            minuts += 1;
+                        }
+                        else
+                        {
+                            seconds += 1;
+                        }
+
+                        Time =  String.Format("{0:D2}", hours) + ":" + String.Format("{0:D2}", minuts) + ":" + String.Format("{0:D2}", seconds);
+                    }
+                    this.NotifyPropertyChanged("Time");
+                };
         }
 
         public int VM_Step
@@ -34,7 +59,7 @@ namespace flight_inspection_app.vm
 
         public int VM_Range
         {
-            get { return model.range(); }
+            get { return model.Range; }
         }
 
         public void play()
@@ -62,6 +87,17 @@ namespace flight_inspection_app.vm
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        int seconds = 0;
+        int minuts = 0;
+        int hours = 0;
+
+        string time;
+        public string Time
+        {
+            get { return this.time; }
+            set { this.time = value; }
         }
     }
 }

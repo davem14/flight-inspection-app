@@ -12,13 +12,7 @@ namespace flight_inspection_app.model
         public delegate void PlayAction();
 
         int numberOfLines;
-        public Flight_Model(List<string> file)
-        {
-            this.file = file;
-            numberOfLines = file.Count;
-            step = 0;
-            speed = 1;
-        }
+        public Flight_Model() { }
 
         // property of step time
         // gets and sets the current step and updats the observers
@@ -66,6 +60,33 @@ namespace flight_inspection_app.model
             {
                 line = value;
                 this.NotifyPropertyChanged("Line");
+            }
+        }
+
+        // the file (list of lines)
+        private List<string> file;
+        public List<string> File
+        {
+            get { return file; }
+            set
+            {
+                file = value;
+                step = 0;
+                speed = 1;
+                numberOfLines = file.Count;
+                Range = file.Count -1;
+                this.NotifyPropertyChanged("File");
+            }
+        }
+
+        private int range;
+        public int Range
+        {
+            get { return range; }
+            set
+            {
+                range = value;
+                this.NotifyPropertyChanged("Range");
             }
         }
 
@@ -129,22 +150,9 @@ namespace flight_inspection_app.model
             stop = true;
         }
 
-        // the file (list of lines)
-        private List<string> file;
-
-        public int range()
-        {
-            return numberOfLines - 1;
-        }
-
         public void stopRun()
         {
             run = false;
-        }
-
-        public void setFile(List<string> file)
-        {
-            this.file = file;
         }
     }
 }

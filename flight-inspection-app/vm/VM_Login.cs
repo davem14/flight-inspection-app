@@ -6,54 +6,43 @@ using System.Threading.Tasks;
 using flight_inspection_app.model;
 using flight_inspection_app;
 using System.IO;
+using flight_inspection_app.vm.reading_files_classes;
 
 namespace flight_inspection_app.vm
 {
     
     class VM_Login
     {
-        string fileName;
+        string CsvFileName;
+        string XmlFileName;
 
-        public string VM_FileName
+        public string VM_CsvFileName
         {
-                get { return fileName; }
-                set { fileName = value; }
-            }
+            get { return CsvFileName; }
+            set { CsvFileName = value; }
+        }
+
+        public string VM_XmlFileName
+        {
+            get { return XmlFileName; }
+            set { XmlFileName = value; }
+        }
+
         public void start()
         {
-            FileHandler fileHandler = new FileHandler(fileName);
-            Flight_Model model = new Flight_Model(fileHandler.getFile());
+            FileHandler fileHandler = new FileHandler(CsvFileName);
+            XmlHandler xmlHandler = new XmlHandler(XmlFileName);
 
-            MainWindow mainWindow = new MainWindow(model, fileHandler);
+            Flight_Model model = new Flight_Model();
+
+            MainWindow mainWindow = new MainWindow(model, xmlHandler);
+
+            model.File = fileHandler.getFile();
+
             mainWindow.Show();
             model.start();
             
             
         }
     }
-
-    public class FileHandler
-    {
-        List<string> file;
-        public FileHandler(string fileName)
-        {
-            createListFile(fileName);
-        }
-
-        private void createListFile(string fileName)
-        {
-            using (var reader = new StreamReader(fileName))
-            {
-                file = new List<string>();
-                while (!reader.EndOfStream)
-                    file.Add(reader.ReadLine());
-            }
-        }
-
-        public List<string> getFile()
-        {
-            return file;
-        }
-    }
-
 }
