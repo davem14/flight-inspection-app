@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +43,8 @@ namespace flight_inspection_app
             playBar.Children.Add(new playBar(model));
             details.Children.Add(new details(model));
             graph.Children.Add(new graph(model, xmlHandler));
+            joystick.Children.Add(new Joystick(model));
+
         }
 
         private void Closing_Window(object sender, System.ComponentModel.CancelEventArgs e)
