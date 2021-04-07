@@ -35,6 +35,7 @@ namespace flight_inspection_app.vm
                 {
                     initializationOfData(model.File);
                     this.correlationItem = Correlation.findCorrelations(chunksNames, map);
+                    this.listsPointsStaticRegression = createPointsDataStaticRegression();
                     this.NotifyPropertyChanged("VM_" + e.PropertyName);
                 }
                 else if (Equals(e.PropertyName, "Step"))
@@ -236,6 +237,27 @@ namespace flight_inspection_app.vm
             }
         }
 
+        Dictionary<int, IList<DataPoint>> listsPointsStaticRegression;
+        public IList<DataPoint> getPointsLine(int index)
+        {
+            return listsPointsStaticRegression[index];
+        }
+
+
+        public Dictionary<int, IList<DataPoint>>  createPointsDataStaticRegression()
+        {
+            Dictionary<int, IList<DataPoint>>  listsPoints = new Dictionary<int, IList<DataPoint>>();
+
+            int len = chunksNames.Count;
+
+            for(int i = 0; i < len; i++)
+            {
+                listsPoints.Add(i, getPointsStaticRegression(i));
+            }
+
+            return listsPoints;
+        }
+
         public List<DataPoint> getPointsStaticRegression(int index)
         {
             List<Point> points = correlationItem[index].Points;
@@ -260,6 +282,9 @@ namespace flight_inspection_app.vm
             }
             return listPoints;
         }
+
+
+
 
         public Dictionary<int, List<float>> Map
         {
