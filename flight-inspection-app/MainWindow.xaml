@@ -20,7 +20,7 @@
         <Grid x:Name="playBar" Grid.Row="2" Grid.Column="1"/>
         <Grid x:Name="details" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"/>
         <Grid x:Name="graph" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
-        <Grid x:Name="joystick" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"/>
+        <Grid x:Name="joystick" Grid.Column="0" Margin="0,95,0,18"/>
 
 
     </Grid>
