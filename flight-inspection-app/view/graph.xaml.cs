@@ -52,7 +52,7 @@ namespace flight_inspection_app.view
                 description.Foreground = vm.ColorOfDescription;
 
 
-                vm.PointsStaticRegression = vm.getPointsStaticRegression(vm.IndexCategory);
+                vm.PointsStaticRegression = vm.getPointsLine(vm.IndexCategory);
                 regressionLine.Annotations.Clear();
                 regressionLine.Annotations.Add(vm.lineAnnotation(vm.IndexCategory));
             }
