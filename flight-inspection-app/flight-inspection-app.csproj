@@ -152,22 +152,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="view\icon player\play.png" />
+    <Resource Include="view\icon_player\play.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="view\icon player\pause.png" />
+    <Resource Include="view\icon_player\pause.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="view\icon player\stop.png" />
+    <Resource Include="view\icon_player\stop.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="view\icon player\forwards.png" />
+    <Resource Include="view\icon_player\forwards.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="view\icon player\backwards.png" />
+    <Resource Include="view\icon_player\backwards.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="view\photo_additional_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\icon_player\skip_backward.png" />
+    <Resource Include="view\icon_player\skip_forward.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

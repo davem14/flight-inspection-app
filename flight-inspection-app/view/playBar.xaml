@@ -38,23 +38,27 @@
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
 
-                <Button Grid.Column="0" x:Name="t1"/>
+                <Button Grid.Column="0" x:Name="skip_backward" Click="skip_backward_Click">
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/skip_backward.png" Stretch="Fill" Width="26"/>
+                </Button>
                 <Button Grid.Column="2" x:Name="backwards" Click="backwards_Click">
-                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/backwards.png" Stretch="Fill" Width="26"/>
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/backwards.png" Stretch="Fill" Width="26"/>
                 </Button>
                 <Button Grid.Column="4" x:Name="play" Click="play_Click" ToolTip="Play">
-                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/play.png" Stretch="Fill" Width="26"/>
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/play.png" Stretch="Fill" Width="26"/>
                 </Button>
                 <Button Grid.Column="6" x:Name="pause" Click="pause_Click" ToolTip="Pause">
-                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/pause.png" Stretch="Fill" Width="26"/>
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/pause.png" Stretch="Fill" Width="26"/>
                 </Button>
                 <Button Grid.Column="8" x:Name="stop" Click="stop_Click" ToolTip="Stop">
-                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/stop.png" Stretch="Fill" Width="26"/>
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/stop.png" Stretch="Fill" Width="26"/>
                 </Button>
                 <Button Grid.Column="10" x:Name="forwards" Click="forwards_Click">
-                    <Image Height="26" Source="/flight-inspection-app;component/view/icon player/forwards.png" Stretch="Fill" Width="26"/>
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/forwards.png" Stretch="Fill" Width="26"/>
                 </Button>
-                <Button Grid.Column="12" x:Name="t7"/>
+                <Button Grid.Column="12" x:Name="skip_forward" Click="skip_forward_Click">
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/skip_forward.png" Stretch="Fill" Width="26"/>
+                </Button>
 
                 <Label Grid.Column="14" Content="Play speed" FontSize="15"/>
                 <TextBox Grid.Column="16" Text="{Binding VM_Speed}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>

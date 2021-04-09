@@ -55,5 +55,16 @@ namespace flight_inspection_app.view
         {
             vm.forwards();
         }
+
+        private void skip_forward_Click(object sender, RoutedEventArgs e)
+        {
+            vm.skip_forward();
+        }
+
+        private void skip_backward_Click(object sender, RoutedEventArgs e)
+        {
+            vm.skip_backward();
+        }
+
     }
 }

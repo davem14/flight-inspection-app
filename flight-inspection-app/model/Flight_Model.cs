@@ -22,13 +22,10 @@ namespace flight_inspection_app.model
             get { return this.step; }
             set
             {
-                if (value >= 0 /*&& value <=MAXVALUE*/)
-                {
-                    if (Equals(this.step, numberOfLines - 1) && !Equals(value, numberOfLines))
-                        eventWaitHandle.Set();
-                    step = value;
-                    this.NotifyPropertyChanged("Step");
-                }
+                if (Equals(this.step, range) && !Equals(value, numberOfLines))
+                    eventWaitHandle.Set();
+                step = Math.Min(Math.Max(value, 0), range);
+                this.NotifyPropertyChanged("Step");
             }
         }
 
@@ -40,7 +37,7 @@ namespace flight_inspection_app.model
             get { return this.speed; }
             set
             {
-                if (value >= 0 /*&& value <=MAXSPEED*/)
+                if (value >= 0)
                 {
                     this.speed = value;
                     if (this.speed != 0 && stop == false)

@@ -83,6 +83,16 @@ namespace flight_inspection_app.vm
             model.Step = model.Step + 100;
         }
 
+        public void skip_forward()
+        {
+            model.Step = model.Step + 300;
+        }
+
+        public void skip_backward()
+        {
+            model.Step = model.Step -300;
+        }
+
         public void NotifyPropertyChanged(string propertyName)
         {
             if (this.PropertyChanged != null)
