@@ -8,13 +8,14 @@ namespace flight_inspection_app.vm.reading_files_classes
 {
     public class XmlHandler
     {
-        List<string> chunksNames;
+        private List<string> chunksNames;
         public XmlHandler(string fileName)
         {
             chunksNames = getChunksName(fileName);
+            handleDuplicateNames();
         }
 
-        List<string> getChunksName(string fileName)
+        private List<string> getChunksName(string fileName)
         {
             string[] lines = System.IO.File.ReadAllLines(@fileName);
             int size = lines.Length;
@@ -45,7 +46,36 @@ namespace flight_inspection_app.vm.reading_files_classes
                 names[j] = s;
             }
 
+            len = names.Count;
+
+            for (int j = 0; j < len; j++)
+            {
+                names[j] = names[j].Replace("-", "_");
+            }
+
+
             return names;
+        }
+
+        private void handleDuplicateNames()
+        {
+            int len = chunksNames.Count;
+            for(int i = 0; i < len; i++)
+            {
+                bool isDuplicate = false;
+                int times = 2;
+                for (int j = i+1; j < len; j++)
+                {
+                    if(Equals(chunksNames[i], chunksNames[j]))
+                    {
+                        isDuplicate = true;
+                        chunksNames[j] = chunksNames[j] + "_" + times.ToString();
+                        times += 1;
+                    }
+                }
+                if (isDuplicate)
+                    chunksNames[i] = chunksNames[i] + "_1";
+            }
         }
 
         public List<string> getList()
