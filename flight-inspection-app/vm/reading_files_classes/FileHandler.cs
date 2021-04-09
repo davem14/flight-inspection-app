@@ -23,7 +23,7 @@ namespace flight_inspection_app.vm.reading_files_classes
                 while (!reader.EndOfStream)
                     file.Add(reader.ReadLine());
             }
-            file.RemoveAt(0);
+            //file.RemoveAt(0);
         }
 
         public List<string> getFile()
