@@ -25,20 +25,13 @@ namespace flight_inspection_app.vm
                 {
                     if (Equals(e.PropertyName, "Step") && (model.Step % 10) == 0)
                     {
-                        if (minuts == 59)
-                        {
-                            minuts = 0;
-                            hours = 0;
-                        }
-                        if (seconds == 59)
-                        {
-                            seconds = 0;
-                            minuts += 1;
-                        }
-                        else
-                        {
-                            seconds += 1;
-                        }
+                        int currentStep = model.Step / 10;
+
+                        hours = currentStep / 3600;
+                        currentStep = currentStep % 3600;
+                        minuts = currentStep / 60;
+                        currentStep = currentStep % 60;
+                        seconds = currentStep;
 
                         Time =  String.Format("{0:D2}", hours) + ":" + String.Format("{0:D2}", minuts) + ":" + String.Format("{0:D2}", seconds);
                     }
@@ -73,6 +66,7 @@ namespace flight_inspection_app.vm
         public void stop()
         {
             model.Step = 0;
+            model.pause();
         }
         public void backwards()
         {
