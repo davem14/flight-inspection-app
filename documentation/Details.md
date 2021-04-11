@@ -1,4 +1,3 @@
-details:
 To present the details of the flight, we created a several classes.
 view.details class:
  
