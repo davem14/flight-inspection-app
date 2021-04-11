@@ -4,30 +4,30 @@
 The purpose of this application is help investigate data of flight. The app using with app "FlightGear" as a screen to display the airplane.
 In the application there is several features: play bar, corrrlation between category, joystick, plugin system to upload anomaly detector and more.
 
-The app was written in architecture of MVVM.
+The app was written in architecture of MVVM (Model–view–viewmodel).
 
 
 ## General structure of the folders:
 1. **flight-inspection-app**:
-  - model:
-    - file "Flight_Model" - this is the model in the architecture MVVM
-  - vm:
-    - file "VM_Login" - 
-    - file "VM_PlayBar" - the view model of the view play bar.
-    - file "VM_Details" - the view model of hte view details.
-    - file "VM_Joystick" - the view model of hte view joystick.
-    - file "VM_Grahp" - the view model of hte view graph.
-    - file "VM_Screen" - this view model is for communication with the app "FlightGear".
-    - folders: reading_files_classes - classes handling with files. correlation_classes, statistics - help with drawing graphs.
-    - ///
-  - view:
-    - file "login"
-    - file "playBar"
-    - file "details"
-    - file "joystick"
-    - file "graph"
-    - 
-  - file "MainWindow" - 
+    - model:
+      - file "Flight_Model" - this is the model in the architecture MVVM
+    - vm:
+      - file "VM_Login" - 
+      - file "VM_PlayBar" - the view model of the view play bar.
+      - file "VM_Details" - the view model of hte view details.
+      - file "VM_Joystick" - the view model of hte view joystick.
+      - file "VM_Grahp" - the view model of hte view graph.
+      - file "VM_Screen" - this view model is for communication with the app "FlightGear".
+      - folders: reading_files_classes - classes handling with files. correlation_classes, statistics - help with drawing graphs.
+      - file dll ???????
+    - view:
+      - file "login"
+      - file "playBar"
+      - file "details"
+      - file "joystick"
+      - file "graph"
+      - file dll ???????
+    - file "MainWindow" - 
 2. **plugin**:
 4. **documentation**:
 In this folder there is more documentation about the classes.
@@ -40,6 +40,14 @@ In this folder there is more documentation about the classes.
 ## Installing the app:
 
 ## More documentation about the classes:
+- [Flight Model](documentation/Model.md)
+- [Login](documentation/Login.md)
+- [PlayBar](documentation/PlayBar.md)
+- [Details](documentation/Details.md)
+- [Joystick](documentation/Joystick.md)
+- [Graph](documentation/Graph.md)
+- [DLL plugin](documentation/Dll.md)
+- [UML diagram](documentation/uml.pdf)
 
 ## Link to video
 
