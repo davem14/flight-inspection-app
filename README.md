@@ -1,6 +1,6 @@
 # flight-inspection-app
 
-## About the desktop application:
+## About this Windows desktop application:
 
 ### The purpose:
 This app purpose is to investigate flight's data. The app has several features: control over the flight's video using controls, displaying the main flight's data (such as speed and height), statistical data – correlation between categories with graphs, joystick that moves according to flight's data and plugin system that allows uploading 'anomaly detector' to detect animalities during the flight.
@@ -51,7 +51,13 @@ In this folder there is more documentation about the classes.
 1. .NET Framework 4.7.2
 2. Packages: OxyPlot.Core, OxyPlot.Wpf
 
-## Installing the app:
+## App instalation and using instructions:
+
+### Instalation instructions:
+
+### Using instructions:
+
+### Plugin system using instructions:
 
 ## More documentation about the classes:
 - [Flight Model](documentation/Model.md)
@@ -63,10 +69,10 @@ In this folder there is more documentation about the classes.
 - [DLL plugin](documentation/Dll.md)
 - [UML diagram](documentation/uml.pdf)
 
-## Link to video
+## Link to video for demo of using:
 
 
-## Owners
+## Developed by:
 * Yuval Tal
 * David Emanuel
 * Yaniv Rotics
