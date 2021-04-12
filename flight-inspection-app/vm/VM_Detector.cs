@@ -17,7 +17,8 @@ namespace flight_inspection_app.vm
         private dllUpload dllWindow;
         private XmlHandler xmlHandler;
         private string anomalyFlightCSVPath;
-
+        private List<Tuple<Tuple<int, int>, string>> anomoalies;
+        
         //public event PropertyChangedEventHandler PropertyChanged;
         public VM_Detector(Flight_Model model, /*graph g,*/ XmlHandler xmlHandler, FileHandler fileHandler)
         {
@@ -40,7 +41,8 @@ namespace flight_inspection_app.vm
             var obj = Activator.CreateInstance(theType);
             var method = theType.GetMethod("Detect");
 
-            var anoalyReports = method.Invoke(obj, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, nameChunks });
+            var anoms = method.Invoke(obj, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, nameChunks });
+            this.anomoalies = (List<Tuple<Tuple<int, int>, string>>)anoms;
         }
 
 
