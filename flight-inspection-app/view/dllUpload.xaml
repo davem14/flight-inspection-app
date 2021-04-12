@@ -41,7 +41,7 @@
 
 
                 <TextBlock Grid.Row="8" Grid.ColumnSpan="2" Text="Note: To continue, you must to choose a file." FontSize="14" Foreground="#FFB82020"/>
-                <Button x:Name="_continue" Grid.Row="9" Grid.ColumnSpan="2" Content="Continue" FontSize="14" IsEnabled="False" Click="_continue_Click"/>
+                <Button x:Name="_continue" Grid.Row="9" Grid.ColumnSpan="2" Content="Continue" FontSize="14" Click="_continue_Click"/>
             </Grid>
         </Border>
     </Grid>
