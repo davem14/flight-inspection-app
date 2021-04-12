@@ -39,12 +39,12 @@ namespace flight_inspection_app
 
         private void loadedUserControl()
         {
-            VM_Screen temp = new VM_Screen(model);
+            VM_Screen screen = new VM_Screen(model);
             playBar.Children.Add(new playBar(model));
             details.Children.Add(new details(model));
             graph.Children.Add(new graph(model, xmlHandler));
             joystick.Children.Add(new Joystick(model));
-
+            detector.Children.Add(new detector(model, /*graph,*/ xmlHandler));
         }
 
         private void Closing_Window(object sender, System.ComponentModel.CancelEventArgs e)
