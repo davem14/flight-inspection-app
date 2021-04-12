@@ -12,9 +12,9 @@
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="30"/>
                     <ColumnDefinition Width="10"/>
@@ -30,9 +30,11 @@
                 </Grid.RowDefinitions>
 
                 <Button Grid.Column="1" x:Name="uplaod" Click="upload_Click">
-                    <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/upload.png" Stretch="Fill" Width="26"/>
+                    <Label Content="upload"/>
+                    <!--Image Height="26" Source="/flight-inspection-app;component/view/icon_player/upload.png" Stretch="Fill" Width="26"/-->
                 </Button>
                 <Button Grid.Column="3" x:Name="detect" Click="detect_Click">
+                    <Label Content="detect"/>
                     <!--Image Height="26" Source="/flight-inspection-app;component/view/icon_player/detect.png" Stretch="Fill" Width="26"/-->
                 </Button>
                 <Button Grid.Column="5" x:Name="previous" Click="previous_Click">
@@ -41,7 +43,7 @@
                 <Button Grid.Column="7" x:Name="next" Click="next_Click" ToolTip="next">
                     <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/forwards.png" Stretch="Fill" Width="26"/>
                 </Button>
-                <Label Grid.ColumnSpan="7" Grid.Row="1" Content="Anomaly Detector" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.ColumnSpan="9" Grid.Row="1" Content="Anomaly Detector" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             </Grid>
         </Border>

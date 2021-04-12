@@ -18,6 +18,8 @@ namespace flight_inspection_app.vm
         private XmlHandler xmlHandler;
         private string anomalyFlightCSVPath;
         private List<List<int>> anomoalies;
+        int anomaliesLen;
+        int anomalyIdx;
         Dictionary<int, List<Func<double, double>>> featuresThresholdEquations;
 
         //public event PropertyChangedEventHandler PropertyChanged;
@@ -47,23 +49,37 @@ namespace flight_inspection_app.vm
             
             var detect = theType.GetMethod("Detect");
             var anoms = detect.Invoke(AD, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, nameChunks });
-            anomoalies = (List<List<int>>)anoms;
+            anomoalies = (List<List<int>>)anoms; // category, begin, end
+            anomaliesLen = anomoalies.Count();
+            anomalyIdx = 0;
 
             var GNM = theType.GetMethod("GetNormalModel");
             var dict = GNM.Invoke(AD, null);
-            featuresThresholdEquations = (Dictionary<int, List<Func<double, double>>>)dict;
-
-
+            //featuresThresholdEquations = (Dictionary<int, List<Func<double, double>>>)dict;
+            model.Categories = (Dictionary<int, List<Func<double, double>>>)dict;
         }
 
 
         internal void upload() => dllWindow.Show();
 
-        internal void previos() => throw new NotImplementedException();
+        internal void previos()
+        {
+            if (anomalyIdx >= 0)
+            {
+                anomalyIdx--;
+                model.Anomaly = anomoalies[anomalyIdx][0];
+                model.Step = anomoalies[anomalyIdx][1];
+            }
+        }
 
         internal void next()
         {
-            throw new NotImplementedException();
+            if (anomalyIdx < anomaliesLen)
+            {
+                anomalyIdx++;
+                model.Anomaly = anomoalies[anomalyIdx][0];
+                model.Step = anomoalies[anomalyIdx][1];
+            }
         }
     }
 }

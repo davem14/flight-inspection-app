@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
 using flight_inspection_app.model;
-
+using OxyPlot.Annotations;
 
 namespace flight_inspection_app.model
 {
@@ -87,6 +87,27 @@ namespace flight_inspection_app.model
             }
         }
 
+        private Dictionary<int, List<Func<double, double>>> categories;
+        public Dictionary<int, List<Func<double, double>>> Categories
+        {
+            get => categories;
+            set
+            {
+                categories = value;
+                this.NotifyPropertyChanged("Categories");
+            }
+        }
+
+        private int anomaly;
+        public int Anomaly
+        {
+            get => anomaly;
+            set
+            {
+                anomaly = value;
+                this.NotifyPropertyChanged("Anomaly");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propertyName)

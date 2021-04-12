@@ -22,12 +22,16 @@ namespace flight_inspection_app.vm
         List<string> chunksNames;
         List<Chunk> items;
         Dictionary<int, CorrelationDetails> correlationItem;
+        public Dictionary<int, CorrelationDetails> CorrelationItem
+        {
+            get => correlationItem;
+        }
 
         public VM_Graph(Flight_Model model, XmlHandler xmlHandler)
         {
             this.model = model;
             chunksNames = xmlHandler.getList();
-            
+
 
             model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
             {
@@ -49,13 +53,21 @@ namespace flight_inspection_app.vm
                             PointsSecondCategory = getDataPoint(new List<float>());
                         PointsDynamicRegression = getPointsDynamicRegression(correlationItem[indexCategory].Points, indexCategory);
                     }).Start();
-                    
-
+                }
+                else if (Equals(e.PropertyName, "Categories"))
+                {
+                    foreach (var category in model.Categories)
+                    {
+                        correlationItem[category.Key].NormalArea = category.Value;
+                    }
+                }
+                else if (Equals(e.PropertyName, "Anomaly"))
+                {
+                    IndexCategory = model.Anomaly;
                 }
             };
 
         }
-
 
         void initializationOfData(List<string> file)
         {
@@ -88,8 +100,7 @@ namespace flight_inspection_app.vm
                 }
             }
         }
-
-
+        
         public OxyPlot.Wpf.LineAnnotation lineAnnotation(int index)
         {
             OxyPlot.Wpf.LineAnnotation annotation = new OxyPlot.Wpf.LineAnnotation();
@@ -102,17 +113,16 @@ namespace flight_inspection_app.vm
             return annotation;
         }
 
-
         int indexCategory;
         public int IndexCategory
         {
             get {
                 return indexCategory;
-                ;
             }
             set
             {
                 indexCategory = value;
+                this.NotifyPropertyChanged("IndexCategory");
             }
         }
 

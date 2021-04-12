@@ -101,5 +101,12 @@ namespace flight_inspection_app.vm.correlation_classes
             get { return regressionLine; }
             set { regressionLine = value; }
         }
+
+        IList<Func<double, double>> normalArea;
+        public IList<Func<double, double>> NormalArea
+        {
+            get { return normalArea; }
+            set { normalArea = value; }
+        }
     }
 }

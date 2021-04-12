@@ -34,6 +34,33 @@ namespace flight_inspection_app.view
             InitializeComponent();
             vm = new VM_Graph(model, xmlHandler);
             DataContext = vm;
+            vm.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            {
+                if (Equals(e.PropertyName, "IndexCategory"))
+                {
+                    indexCategoryChanged();
+                }
+            };
+        }
+
+        private void indexCategoryChanged()
+        {
+            int index = vm.IndexCategory;
+            chartFirstCategory.Title = vm.Chunks[index].Name;
+            chartSecondCategory.Title = vm.secondCategory(index);
+
+            regressionLine.Title = vm.TitleRegressionLine;
+            description.Text = "  " + vm.DescriptionOfCorrelation;
+            description.Foreground = vm.ColorOfDescription;
+
+
+            vm.PointsStaticRegression = vm.getPointsLine(index);
+            regressionLine.Annotations.Clear();
+            regressionLine.Annotations.Add(vm.lineAnnotation(index));
+            foreach (var func in vm.CorrelationItem[index].NormalArea)
+            {
+                regressionLine.Annotations.Add(new FunctionAnnotation { Equation = func, Color = Color.FromRgb(255,0,0)});
+            }
         }
 
         private void listBoxCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -43,18 +70,6 @@ namespace flight_inspection_app.view
                 //chartFirstCategory.Title = ((Chunk)listBoxCategory.SelectedItem).Name;
 
                 vm.IndexCategory = listBoxCategory.SelectedIndex;
-
-                chartFirstCategory.Title = vm.Chunks[vm.IndexCategory].Name;
-                chartSecondCategory.Title = vm.secondCategory(vm.IndexCategory);
-
-                regressionLine.Title = vm.TitleRegressionLine;
-                description.Text = "  " + vm.DescriptionOfCorrelation;
-                description.Foreground = vm.ColorOfDescription;
-
-
-                vm.PointsStaticRegression = vm.getPointsLine(vm.IndexCategory);
-                regressionLine.Annotations.Clear();
-                regressionLine.Annotations.Add(vm.lineAnnotation(vm.IndexCategory));
             }
         }
     }
