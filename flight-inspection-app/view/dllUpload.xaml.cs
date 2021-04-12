@@ -39,20 +39,36 @@ namespace flight_inspection_app.view
 
             if (result == true)
             {
+                path.Text = dlg.FileName;
+                _continue.IsEnabled = true;
+                fileName = dlg.FileName;
+            }
+        }
+
+        private void Button_Click1(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+
+            if (result == true)
+            {
                 pathCSV.Text = dlg.FileName;
                 _continue.IsEnabled = true;
                 CsvFileName = dlg.FileName;
             }
         }
 
-        private void Button_Click1(object sender, RoutedEventArgs e)
-        {
-            upload(pathCSV, CsvFileName);
-        }
-
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            upload(pathDLL, DllFileName);
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+
+            if (result == true)
+            {
+                pathDLL.Text = dlg.FileName;
+                _continue.IsEnabled = true;
+                DllFileName = dlg.FileName;
+            }
         }
 
         private void _continue_Click(object sender, RoutedEventArgs e)
