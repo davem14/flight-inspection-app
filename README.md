@@ -1,10 +1,24 @@
 # flight-inspection-app
 
 ## About the desktop application:
-The purpose of this application is help investigate data of flight. The app using with app "FlightGear" as a screen to display the airplane.
-In the application there is several features: play bar, corrrlation between category, joystick, plugin system to upload anomaly detector and more.
 
-The app was written in architecture of MVVM (Model–view–viewmodel).
+### The purpose:
+This app purpose is to investigate flight's data. The app has several features: control over the flight's video using controls, displaying the main flight's data (such as speed and height), statistical data – correlation between categories with graphs, joystick that moves according to flight's data and plugin system that allows uploading 'anomaly detector' to detect animalities during the flight.
+
+### General operation:
+To be able running the app the user has to enter the app 'csv' file that contains the flight data that the user wants to investigate, and also 'xml' file that belongs to the csv file. In addition, the user can use FlightGear application in order to get the airplane's display.
+This app is simple to use with full control over the flight's recording.
+
+### The design pattern implemented in the app:
+The app was designed with MVVM architecture. The model's name is 'Flight Model' and is used by all View Model parts. The 'model' notifies each time a new data line is red, and each 'view model' registered to get a notification can retrieve the current line. The model can receive commands using methods it exposes. It can change the inner state by Properties.
+In addition to the 'model', each part of the app has 'view model' and 'model'. The 'view model' receives notifications from the 'model' and passes on the needed data to the 'view' by using 'Data Context' and 'binding'.
+
+### Developing tools:
+The app was written using the developing tool 'WPF' with .NET Framework platform. This development tool was chosen because this is Windows desktop application, and it is suitable for Windows desktop app development. In addition, this platform fully supports MVVM architecture.
+
+More details about each part of the application can be viewed at appropriate file.
+
+
 
 
 ## General structure of the folders:
