@@ -10,8 +10,10 @@ namespace flight_inspection_app.vm.reading_files_classes
     public class FileHandler
     {
         List<string> file;
+        string fileName;
         public FileHandler(string fileName)
         {
+            this.fileName = fileName;
             createListFile(fileName);
         }
 
@@ -30,5 +32,10 @@ namespace flight_inspection_app.vm.reading_files_classes
         {
             return file;
         }
+
+        public string FileName
+        {
+            get { return this.fileName; }
+        } 
     }
 }

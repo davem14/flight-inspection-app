@@ -29,15 +29,18 @@ namespace flight_inspection_app.view
             login = new VM_Login();
         }
 
+        bool CsvIsChoose = false;
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            Nullable<bool> result = dlg.ShowDialog();
+            dlg.Filter = "file (*.csv) | *.csv";
 
-            if (result == true)
+            if (dlg.ShowDialog() == true)
             {
                 pathCSV.Text = dlg.FileName;
-                _continue.IsEnabled = true;
+                CsvIsChoose = true;
+                if(XmlIsChoose == true)
+                    _continue.IsEnabled = true;
                 CsvFileName = dlg.FileName;
             }
         }
@@ -55,16 +58,20 @@ namespace flight_inspection_app.view
             configuration.Text = "--generic=socket,in,10,127.0.0.1,5400,tcp,XXXXXXXXXX" + Environment.NewLine + "--fdm=null";
         }
 
+        bool XmlIsChoose = false;
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            Nullable<bool> result = dlg.ShowDialog();
+            dlg.Filter = "file (*.xml) | *.xml";
+            //Nullable<bool> result = dlg.ShowDialog();
 
-            if (result == true)
+            if (dlg.ShowDialog() == true)
             {
                 pathXML.Text = dlg.FileName;
-                _continue.IsEnabled = true;
-                XmlFileName = dlg.FileName;
+                XmlIsChoose = true;
+                if (CsvIsChoose == true)
+                    _continue.IsEnabled = true;
+                XmlFileName = dlg.FileName;  
             }
         }
     }
