@@ -35,7 +35,7 @@ namespace flight_inspection_app.vm
 
             Flight_Model model = new Flight_Model();
 
-            MainWindow mainWindow = new MainWindow(model, xmlHandler);
+            MainWindow mainWindow = new MainWindow(model, xmlHandler, fileHandler);
 
             model.File = fileHandler.getFile();
 

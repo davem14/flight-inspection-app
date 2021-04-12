@@ -27,13 +27,15 @@ namespace flight_inspection_app
     {
         Flight_Model model;
         XmlHandler xmlHandler;
+        FileHandler fileHandler;
 
         //FileHandler fileHandler;
-        public MainWindow(Flight_Model model, XmlHandler xmlHandler)
+        public MainWindow(Flight_Model model, XmlHandler xmlHandler, FileHandler fileHandler)
         {
             InitializeComponent();
             this.model = model;
             this.xmlHandler = xmlHandler;
+            this.fileHandler = fileHandler;
             loadedUserControl();
         }
 
@@ -44,7 +46,7 @@ namespace flight_inspection_app
             details.Children.Add(new details(model));
             graph.Children.Add(new graph(model, xmlHandler));
             joystick.Children.Add(new Joystick(model));
-            detector.Children.Add(new detector(model, /*graph,*/ xmlHandler));
+            detector.Children.Add(new detector(model, /*graph,*/ xmlHandler, fileHandler));
         }
 
         private void Closing_Window(object sender, System.ComponentModel.CancelEventArgs e)

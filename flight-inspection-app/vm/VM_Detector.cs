@@ -16,14 +16,16 @@ namespace flight_inspection_app.vm
         //private VM_Graph graph;
         private dllUpload dllWindow;
         private XmlHandler xmlHandler;
+        private string anomalyFlightCSVPath;
 
         //public event PropertyChangedEventHandler PropertyChanged;
-        public VM_Detector(Flight_Model model, /*graph g,*/ XmlHandler xmlHandler)
+        public VM_Detector(Flight_Model model, /*graph g,*/ XmlHandler xmlHandler, FileHandler fileHandler)
         {
             this.model = model;
             //this.graph = graph;
             this.xmlHandler = xmlHandler;
             dllWindow = new dllUpload();
+            anomalyFlightCSVPath = fileHandler.FileName;
         }
 
         public void detect()
@@ -38,7 +40,7 @@ namespace flight_inspection_app.vm
             var obj = Activator.CreateInstance(theType);
             var method = theType.GetMethod("Detect");
 
-            var anoalyReports = method.Invoke(obj, new object[] { dllWindow.pathCSV.Text, model.File, nameChunks });
+            var anoalyReports = method.Invoke(obj, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, nameChunks });
         }
 
 

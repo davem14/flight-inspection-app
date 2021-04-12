@@ -24,10 +24,10 @@ namespace flight_inspection_app.view
     public partial class detector : UserControl
     {
         private VM_Detector vm;
-        public detector(Flight_Model model, /*VM_Graph graph,*/ XmlHandler xmlHandler)
+        public detector(Flight_Model model, /*VM_Graph graph,*/ XmlHandler xmlHandler, FileHandler fileHandler)
         {
             InitializeComponent();
-            vm = new VM_Detector(model, /*,graph*/ xmlHandler);
+            vm = new VM_Detector(model, /*,graph*/ xmlHandler, fileHandler);
             DataContext = vm;
         }
 
