@@ -19,6 +19,12 @@ The app was written using the developing tool 'WPF' with .NET Framework platform
 More details about each part of the application can be viewed at appropriate file.
 
 
+![screen3](https://user-images.githubusercontent.com/72437425/114620193-0234e780-9cb4-11eb-9e0f-d5555dffef94.jpg)
+
+
+
+
+
 
 
 ## General structure of the folders:
