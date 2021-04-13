@@ -4,10 +4,12 @@ namespace AD_plugin
 {
   public class AD
   {
-    public List<List<int>> Detect(string regflightPath, string anomalflightPath, string properties);
+    public List<List<int>> Detect(string regflightPath, string anomalflightPath, int numberOfProperties);
     public Dictionary<int, List<Func<double, double>>> GetNormalModel();
   }
 }
+  
+  Dll must reffer to a feature by its index, therefore Detect recieves the number of properties. 
   
   Detect return type format:
   List of anomalies, each anomaly happens between features i and j, represented by List of 3 ints: int feature1, int start, int end.
@@ -19,4 +21,5 @@ namespace AD_plugin
   { { 3,100,180 } , {4,30,200} }
   
   GetNormalModel return type format:
-  Dictionary of every feature that correlates with another feature 
+  Dictionary of every feature that correlates with another feature mapped to a List of equations(=Func<double,double>).
+  app will generate graphic view of each feature's 'normal domain', drawn by feature's List of equation.  
