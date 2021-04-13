@@ -5,16 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:flight_inspection_app.view"
              mc:Ignorable="d" 
-             d:DesignHeight="120" d:DesignWidth="250">
+             d:DesignHeight="120" d:DesignWidth="300">
 
     <Border Padding="10">
         <Border Padding="10" BorderThickness="1" BorderBrush="LightGray">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="30"/>
                     <ColumnDefinition Width="10"/>
@@ -27,7 +27,8 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="23*"/>
+                    <RowDefinition Height="5*"/>
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
 
@@ -49,7 +50,7 @@
                 <Button Grid.Column="9" x:Name="next" Click="next_Click" IsEnabled="False">
                     <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/forwards.png" Stretch="Fill" Width="26"/>
                 </Button>
-                <Label Grid.ColumnSpan="11" Grid.Row="1" Content="Anomaly Detector" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.ColumnSpan="11" Grid.Row="1" Content="Anomaly Detector" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.RowSpan="2"/>
 
             </Grid>
         </Border>

@@ -24,6 +24,7 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
@@ -40,8 +41,8 @@
                 <TextBox x:Name="pathDLL" Grid.Row="6" Margin="10 0 0 0" Grid.Column="1" Padding="3"/>
 
 
-                <TextBlock Grid.Row="8" Grid.ColumnSpan="2" Text="Note: To continue, you must to choose a file." FontSize="14" Foreground="#FFB82020"/>
-                <Button x:Name="_continue" Grid.Row="9" Grid.ColumnSpan="2" Content="Continue" FontSize="14" Click="_continue_Click"/>
+                <TextBlock Grid.Row="8" Grid.ColumnSpan="2" Text="Note: To continue, you must choose the two files." FontSize="14" Foreground="#FFB82020"/>
+                <Button x:Name="_continue" Grid.Row="10" Grid.ColumnSpan="2" Content="Continue" FontSize="14" Click="_continue_Click"/>
             </Grid>
         </Border>
     </Grid>
