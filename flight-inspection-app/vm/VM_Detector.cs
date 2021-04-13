@@ -3,6 +3,7 @@ using flight_inspection_app.view;
 using flight_inspection_app.vm.reading_files_classes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -10,20 +11,64 @@ using System.Threading.Tasks;
 
 namespace flight_inspection_app.vm
 {
-    class VM_Detector
+    class VM_Detector : INotifyPropertyChanged
     {
+        // fields
         private Flight_Model model;
-        //private VM_Graph graph;
         private dllUpload dllWindow;
         private XmlHandler xmlHandler;
         private string anomalyFlightCSVPath;
         private List<List<int>> anomoalies;
-        int anomaliesLen;
-        int anomalyIdx;
-        Dictionary<int, List<Func<double, double>>> featuresThresholdEquations;
+        private int anomaliesLen;
+        private int anomalyIdx;
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-        public VM_Detector(Flight_Model model, /*graph g,*/ XmlHandler xmlHandler, FileHandler fileHandler)
+        // + properties
+        private bool enableDetect = false;
+        public bool EnableDetect
+        {
+            get => enableDetect;
+            set
+            {
+                enableDetect = value;
+                NotifyPropertyChanged("EnableDetect");
+            }
+        }
+
+        private bool enablePlay = false;
+        public bool EnablePlay
+        {
+            get => enablePlay;
+            set
+            {
+                enablePlay = value;
+                NotifyPropertyChanged("EnablePlay");
+            }
+        }
+
+        private bool enableNext = false;
+        public bool EnableNext
+        {
+            get => enableNext;
+            set
+            {
+                enableNext = value;
+                NotifyPropertyChanged("EnableNext");
+            }
+        }
+
+        private bool enablePrevious = false;
+        public bool EnablePrevious
+        {
+            get => enablePrevious;
+            set
+            {
+                enablePrevious = value;
+                NotifyPropertyChanged("EnablePrevious");
+            }
+        }
+
+        // constructor
+        public VM_Detector(Flight_Model model, XmlHandler xmlHandler, FileHandler fileHandler)
         {
             this.model = model;
             //this.graph = graph;
@@ -32,6 +77,15 @@ namespace flight_inspection_app.vm
             anomalyFlightCSVPath = fileHandler.FileName;
         }
 
+        // property changed members
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        // methods
         public void detect()
         {
             // choose which DLL to load
@@ -49,27 +103,59 @@ namespace flight_inspection_app.vm
             var dict = GNM.Invoke(AD, null);
             //featuresThresholdEquations = (Dictionary<int, List<Func<double, double>>>)dict;
             model.Categories = (Dictionary<int, List<Func<double, double>>>)dict;
+            if(anomaliesLen == 0)
+                EnablePlay = false;
+            else
+                EnablePlay = true;
+            updateNextPrev();
         }
 
-
-        internal void upload() => dllWindow.Show();
-
-        internal void previos()
+        internal void upload()
         {
-            if (anomalyIdx >= 0)
-            {
-                anomalyIdx--;
-                model.Anomaly = anomoalies[anomalyIdx][0];
-                model.Step = anomoalies[anomalyIdx][1];
+            var a = dllWindow.ShowDialog();
+            EnableDetect = dllWindow.isEnabledDetect();
+        }
+                enableDetect = true;
+        }
+                enableDetect = true;
+            anomalyIdx--;
+            play();
+            updateNextPrev();
+        }
             }
         }
+            }
+            anomalyIdx++;
+            play();
+            updateNextPrev();
+        }
 
-        internal void next()
+        internal void play()
         {
-            if (anomalyIdx < anomaliesLen)
+            model.Anomaly = anomoalies[anomalyIdx][0];
+            model.Step = anomoalies[anomalyIdx][1];
+        }
+
+        private void updateNextPrev()
+        {
+            if (anomaliesLen == 0)
             {
-                anomalyIdx++;
-                model.Anomaly = anomoalies[anomalyIdx][0];
+                EnablePrevious = false;
+                EnablePrevious = false;
+                return;
+            }
+            if (anomalyIdx == 0)
+                EnablePrevious = false;
+            else
+                EnablePrevious = true;
+            if (anomalyIdx == anomaliesLen - 1)
+                EnableNext = false;
+            else
+                EnableNext = true;
+                model.Step = anomoalies[anomalyIdx][1];
+            }
+                model.Step = anomoalies[anomalyIdx][1];
+            }
                 model.Step = anomoalies[anomalyIdx][1];
             }
         }

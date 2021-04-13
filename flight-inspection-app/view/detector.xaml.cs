@@ -3,6 +3,7 @@ using flight_inspection_app.vm;
 using flight_inspection_app.vm.reading_files_classes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,27 @@ namespace flight_inspection_app.view
             InitializeComponent();
             vm = new VM_Detector(model, /*,graph*/ xmlHandler, fileHandler);
             DataContext = vm;
+            vm.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            {
+                if (Equals(e.PropertyName, "EnableDetect"))
+                {
+                    detect.IsEnabled = vm.EnableDetect;
+                }
+                else if (Equals(e.PropertyName, "EnablePrevious"))
+                {
+                    previous.IsEnabled = vm.EnablePrevious;
+                }
+                else if (Equals(e.PropertyName, "EnablePlay"))
+                {
+                    play.IsEnabled = vm.EnablePlay;
+                }
+                else if (Equals(e.PropertyName, "EnableNext"))
+                {
+                    next.IsEnabled = vm.EnableNext;
+                }
+            };
         }
+
 
         private void upload_Click(object sender, RoutedEventArgs e)
         {
@@ -49,6 +70,11 @@ namespace flight_inspection_app.view
         private void detect_Click(object sender, RoutedEventArgs e)
         {
             vm.detect();
+        }
+
+        private void play_Click(object sender, RoutedEventArgs e)
+        {
+            vm.play();
         }
     }
 }

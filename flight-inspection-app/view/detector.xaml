@@ -12,9 +12,11 @@
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="30"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="30"/>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="30"/>
                     <ColumnDefinition Width="10"/>
@@ -40,7 +42,11 @@
                 <Button Grid.Column="5" x:Name="previous" Click="previous_Click">
                     <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/backwards.png" Stretch="Fill" Width="26"/>
                 </Button>
-                <Button Grid.Column="7" x:Name="next" Click="next_Click" ToolTip="next">
+                <Label Grid.Column="7" Content="0 / 0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/play.png" Stretch="Fill" Width="26"/>
+                </Button>
+                <!--Label Grid.Column="7" Content="0 / 0" HorizontalAlignment="Center" VerticalAlignment="Center"/-->
+                <Button Grid.Column="9" x:Name="next" Click="next_Click" ToolTip="next" IsEnabled="False">
                     <Image Height="26" Source="/flight-inspection-app;component/view/icon_player/forwards.png" Stretch="Fill" Width="26"/>
                 </Button>
                 <Label Grid.ColumnSpan="9" Grid.Row="1" Content="Anomaly Detector" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>

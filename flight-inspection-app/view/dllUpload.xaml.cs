@@ -24,12 +24,12 @@ namespace flight_inspection_app.view
     {
         string CsvFileName;
         string DllFileName;
-        //VM_DllUpload vm;
+        bool CSV = false;
+        bool DLL = false;
 
         public dllUpload()
         {
             InitializeComponent();
-            //vm = new VM_DllUpload();
         }
 
         private void upload(TextBox path, string fileName)
@@ -52,6 +52,7 @@ namespace flight_inspection_app.view
 
             if (result == true)
             {
+                CSV = true;
                 pathCSV.Text = dlg.FileName;
                 CsvFileName = dlg.FileName;
             }
@@ -65,6 +66,7 @@ namespace flight_inspection_app.view
 
             if (result == true)
             {
+                DLL = true;
                 pathDLL.Text = dlg.FileName;
                 DllFileName = dlg.FileName;
             }
@@ -72,9 +74,9 @@ namespace flight_inspection_app.view
 
         private void _continue_Click(object sender, RoutedEventArgs e)
         {
-            //vm.VM_CsvFileName = CsvFileName;
-            //vm.VM_DllFileName = DllFileName;
             Hide();
         }
+
+        internal bool isEnabledDetect() => CSV && DLL;
     }
 }
