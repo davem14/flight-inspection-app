@@ -1,4 +1,4 @@
-Dll for the app must have
+A Dll for anomalies detection algorythm must have the following structure:
 
 namespace AD_plugin
 {
