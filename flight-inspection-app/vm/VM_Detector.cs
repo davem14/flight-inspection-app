@@ -39,21 +39,15 @@ namespace flight_inspection_app.vm
 
         public void detect()
         {
-            string nameChunks = "";
-            int i = 0;
-            foreach (var str in xmlHandler.getList())
-            {
-                nameChunks += i.ToString() + ",";
-                ++i;
-            }
 
             // choose which DLL to load
             var assembly = Assembly.LoadFile(dllWindow.pathDLL.Text);
             var theType = assembly.GetType("AD_plugin.AD");
             var AD = Activator.CreateInstance(theType);
             
+            // detect gets CSV and DLL paths and number of features
             var detect = theType.GetMethod("Detect");
-            var anoms = detect.Invoke(AD, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, nameChunks });
+            var anoms = detect.Invoke(AD, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, xmlHandler.getList().Count });
             anomoalies = (List<List<int>>)anoms; // category, begin, end
             anomaliesLen = anomoalies.Count();
             anomalyIdx = 0;
@@ -61,7 +55,7 @@ namespace flight_inspection_app.vm
             var GNM = theType.GetMethod("GetNormalModel");
             var dict = GNM.Invoke(AD, null);
             //featuresThresholdEquations = (Dictionary<int, List<Func<double, double>>>)dict;
-            model.Categories = (Dictionary<int, List<Func<double, double>>>)dict;
+            model.Categories = (Dictionary<int, List<Func<double, double>>>)dict; // category->List of functions to draw in graph
         }
 
 
