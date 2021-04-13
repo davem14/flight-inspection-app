@@ -42,10 +42,10 @@
                     <Slider x:Name="TmSlide" Grid.Row="3" Grid.Column="2" Value="{Binding VM_Rudder, Mode=OneWay}" Maximum="1" Minimum="-1" VerticalAlignment="Center"/>
 
 
-                    <Label Content="{Binding VM_Throttle}" HorizontalAlignment="Left" Margin="0,0,151,6" VerticalAlignment="Center" Foreground="#FF0A0101" Background="{x:Null}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Height="24" Width="69"/>
-                    <Label Content="{Binding VM_Aileron}" HorizontalAlignment="Left" Margin="116,3,0,2" VerticalAlignment="Center" Foreground="#FF0A0101" Background="{x:Null}" Grid.Column="2" Width="76" Height="25" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
-                    <Label Content="{Binding VM_Elevator}" HorizontalAlignment="Left" Margin="149,138,-19,6" VerticalAlignment="Center" Foreground="#FF0A0101" Background="{x:Null}" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Height="26" Width="70"/>
-                    <Label Content="{Binding VM_Rudder}" HorizontalAlignment="Left" Margin="116,24,8,0" VerticalAlignment="Center" Foreground="#FF0A0101" Background="{x:Null}" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Height="26" Width="76" Grid.RowSpan="2"/>
+                    <Label Content="{Binding VM_Throttle}" HorizontalAlignment="Left" Margin="0,0,151,6" VerticalAlignment="Center" Foreground="#FF0A0101" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Height="24" Width="69"/>
+                    <Label Content="{Binding VM_Aileron}" HorizontalAlignment="Left" Margin="116,3,0,2" VerticalAlignment="Center" Foreground="#FF0A0101" Grid.Column="2" Width="76" Height="25" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+                    <Label Content="{Binding VM_Elevator}" HorizontalAlignment="Left" Margin="149,138,-19,6" VerticalAlignment="Center" Foreground="#FF0A0101" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Height="26" Width="70"/>
+                    <Label Content="{Binding VM_Rudder}" HorizontalAlignment="Left" Margin="116,24,8,0" VerticalAlignment="Center" Foreground="#FF0A0101" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Height="26" Width="76" Grid.RowSpan="2"/>
 
                     <TextBlock Text="Throttle" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-15,73,10,75" Foreground="#FF190202" FontSize="16" Grid.Row="2" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
