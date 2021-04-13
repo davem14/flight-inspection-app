@@ -92,7 +92,7 @@ namespace flight_inspection_app.vm
             var assembly = Assembly.LoadFile(dllWindow.pathDLL.Text);
             var theType = assembly.GetType("AD_plugin.AD");
             var AD = Activator.CreateInstance(theType);
-            
+
             var detect = theType.GetMethod("Detect");
             var anoms = detect.Invoke(AD, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, xmlHandler.getList().Count });
             anomoalies = (List<List<int>>)anoms; // category, begin, end
@@ -103,7 +103,7 @@ namespace flight_inspection_app.vm
             var dict = GNM.Invoke(AD, null);
             //featuresThresholdEquations = (Dictionary<int, List<Func<double, double>>>)dict;
             model.Categories = (Dictionary<int, List<Func<double, double>>>)dict;
-            if(anomaliesLen == 0)
+            if (anomaliesLen == 0)
                 EnablePlay = false;
             else
                 EnablePlay = true;
@@ -115,16 +115,16 @@ namespace flight_inspection_app.vm
             var a = dllWindow.ShowDialog();
             EnableDetect = dllWindow.isEnabledDetect();
         }
-                enableDetect = true;
-        }
-                enableDetect = true;
+
+        internal void previous()
+        {
             anomalyIdx--;
             play();
             updateNextPrev();
         }
-            }
-        }
-            }
+
+        internal void next()
+        {
             anomalyIdx++;
             play();
             updateNextPrev();
@@ -141,23 +141,18 @@ namespace flight_inspection_app.vm
             if (anomaliesLen == 0)
             {
                 EnablePrevious = false;
-                EnablePrevious = false;
+                EnableNext = false;
                 return;
             }
             if (anomalyIdx == 0)
                 EnablePrevious = false;
             else
                 EnablePrevious = true;
+
             if (anomalyIdx == anomaliesLen - 1)
                 EnableNext = false;
             else
                 EnableNext = true;
-                model.Step = anomoalies[anomalyIdx][1];
-            }
-                model.Step = anomoalies[anomalyIdx][1];
-            }
-                model.Step = anomoalies[anomalyIdx][1];
-            }
         }
     }
 }

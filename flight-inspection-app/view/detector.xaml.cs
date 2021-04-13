@@ -59,7 +59,7 @@ namespace flight_inspection_app.view
 
         private void previous_Click(object sender, RoutedEventArgs e)
         {
-            vm.previos();
+            vm.previous();
         }
 
         private void next_Click(object sender, RoutedEventArgs e)
