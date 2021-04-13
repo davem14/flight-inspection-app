@@ -18,20 +18,15 @@ namespace flight_inspection_app.vm
         private XmlHandler xmlHandler;
         private string anomalyFlightCSVPath;
         private List<List<int>> anomoalies;
-        private Dictionary<int, List<Func<double, double>>> featuresThresholdEquations;
-        private int anomaliesLen;
-        private int anomalyIdx;
-
-        private bool enableDetect = false;
-        public bool EnableDetect
-        {
-            get => enableDetect;
-        }
+        int anomaliesLen;
+        int anomalyIdx;
+        Dictionary<int, List<Func<double, double>>> featuresThresholdEquations;
 
         //public event PropertyChangedEventHandler PropertyChanged;
-        public VM_Detector(Flight_Model model, XmlHandler xmlHandler, FileHandler fileHandler)
+        public VM_Detector(Flight_Model model, /*graph g,*/ XmlHandler xmlHandler, FileHandler fileHandler)
         {
             this.model = model;
+            //this.graph = graph;
             this.xmlHandler = xmlHandler;
             dllWindow = new dllUpload();
             anomalyFlightCSVPath = fileHandler.FileName;
@@ -39,15 +34,21 @@ namespace flight_inspection_app.vm
 
         public void detect()
         {
+            string nameChunks = "";
+            int i = 0;
+            foreach (var str in xmlHandler.getList())
+            {
+                nameChunks += i.ToString() + ",";
+                ++i;
+            }
 
             // choose which DLL to load
             var assembly = Assembly.LoadFile(dllWindow.pathDLL.Text);
             var theType = assembly.GetType("AD_plugin.AD");
             var AD = Activator.CreateInstance(theType);
             
-            // detect gets CSV and DLL paths and number of features
             var detect = theType.GetMethod("Detect");
-            var anoms = detect.Invoke(AD, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, xmlHandler.getList().Count });
+            var anoms = detect.Invoke(AD, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, nameChunks });
             anomoalies = (List<List<int>>)anoms; // category, begin, end
             anomaliesLen = anomoalies.Count();
             anomalyIdx = 0;
@@ -55,20 +56,15 @@ namespace flight_inspection_app.vm
             var GNM = theType.GetMethod("GetNormalModel");
             var dict = GNM.Invoke(AD, null);
             //featuresThresholdEquations = (Dictionary<int, List<Func<double, double>>>)dict;
-            model.Categories = (Dictionary<int, List<Func<double, double>>>)dict; // category->List of functions to draw in graph
+            model.Categories = (Dictionary<int, List<Func<double, double>>>)dict;
         }
 
 
-        internal void upload()
-        {
-            dllWindow.Show();
-            if (dllWindow.pathCSV.Text != "" && dllWindow.pathDLL.Text != "")
-                enableDetect = true;
-        }
+        internal void upload() => dllWindow.Show();
 
         internal void previos()
         {
-            if (anomalyIdx > 0)
+            if (anomalyIdx >= 0)
             {
                 anomalyIdx--;
                 model.Anomaly = anomoalies[anomalyIdx][0];
@@ -78,7 +74,7 @@ namespace flight_inspection_app.vm
 
         internal void next()
         {
-            if (anomalyIdx < anomaliesLen - 1)
+            if (anomalyIdx < anomaliesLen)
             {
                 anomalyIdx++;
                 model.Anomaly = anomoalies[anomalyIdx][0];

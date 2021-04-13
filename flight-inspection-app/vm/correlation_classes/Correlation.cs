@@ -102,7 +102,7 @@ namespace flight_inspection_app.vm.correlation_classes
             set { regressionLine = value; }
         }
 
-        IList<Func<double, double>> normalArea = new List<Func<double, double>>();
+        IList<Func<double, double>> normalArea;
         public IList<Func<double, double>> NormalArea
         {
             get { return normalArea; }
