@@ -18,15 +18,20 @@ namespace flight_inspection_app.vm
         private XmlHandler xmlHandler;
         private string anomalyFlightCSVPath;
         private List<List<int>> anomoalies;
-        int anomaliesLen;
-        int anomalyIdx;
-        Dictionary<int, List<Func<double, double>>> featuresThresholdEquations;
+        private Dictionary<int, List<Func<double, double>>> featuresThresholdEquations;
+        private int anomaliesLen;
+        private int anomalyIdx;
+
+        private bool enableDetect = false;
+        public bool EnableDetect
+        {
+            get => enableDetect;
+        }
 
         //public event PropertyChangedEventHandler PropertyChanged;
-        public VM_Detector(Flight_Model model, /*graph g,*/ XmlHandler xmlHandler, FileHandler fileHandler)
+        public VM_Detector(Flight_Model model, XmlHandler xmlHandler, FileHandler fileHandler)
         {
             this.model = model;
-            //this.graph = graph;
             this.xmlHandler = xmlHandler;
             dllWindow = new dllUpload();
             anomalyFlightCSVPath = fileHandler.FileName;
@@ -60,11 +65,16 @@ namespace flight_inspection_app.vm
         }
 
 
-        internal void upload() => dllWindow.Show();
+        internal void upload()
+        {
+            dllWindow.Show();
+            if (dllWindow.pathCSV.Text != "" && dllWindow.pathDLL.Text != "")
+                enableDetect = true;
+        }
 
         internal void previos()
         {
-            if (anomalyIdx >= 0)
+            if (anomalyIdx > 0)
             {
                 anomalyIdx--;
                 model.Anomaly = anomoalies[anomalyIdx][0];
@@ -74,7 +84,7 @@ namespace flight_inspection_app.vm
 
         internal void next()
         {
-            if (anomalyIdx < anomaliesLen)
+            if (anomalyIdx < anomaliesLen - 1)
             {
                 anomalyIdx++;
                 model.Anomaly = anomoalies[anomalyIdx][0];
