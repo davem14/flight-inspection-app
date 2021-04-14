@@ -27,5 +27,6 @@ Detect will return:
 { { 3,100,180 } , {4,30,200} }
   
 **'GetNormalModel' return type format:**
+
 Dictionary of every feature that correlates with another feature mapped to a List of equations(=Func<double,double>).
 app will generate graphic view of each feature's 'normal domain', drawn by feature's List of equation.  
