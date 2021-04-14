@@ -54,7 +54,7 @@ In this folder there is more documentation about the classes.
 1. .NET Framework 4.7.2
 2. Packages: OxyPlot.Core, OxyPlot.Wpf
 
-## App instalation and using instructions:
+## App installation and using instructions:
 
 ### Instalation instructions:
 1. Download the zip file of the project with all the folders.
