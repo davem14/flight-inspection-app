@@ -28,6 +28,7 @@ namespace flight_inspection_app.view
             InitializeComponent();
             vm = new VM_PlayBar(model);
             DataContext = vm;
+            this.speed_val.Text = "1.0";
             // ...
         }
 

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:flight_inspection_app.view"
+             
              mc:Ignorable="d" 
              d:DesignHeight="110" d:DesignWidth="600" Background="White">
     <Border Padding="10">
@@ -61,7 +62,7 @@
                 </Button>
 
                 <Label Grid.Column="14" Content="Play speed" FontSize="15"/>
-                <TextBox Grid.Column="16" Text="{Binding VM_Speed, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="speed_val" Grid.Column="16" Text="{Binding Path=VM_Speed, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"/>
                 <Label Grid.Column="18" Content="{Binding Time}" FontSize="15"/>
 
                 <Slider Grid.Row="2" Grid.ColumnSpan="19" Minimum="0" Maximum="{Binding VM_Range}" Value="{Binding VM_Step, Mode=TwoWay}" />
