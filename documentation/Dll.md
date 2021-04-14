@@ -1,4 +1,4 @@
-### More details about the 'Details':
+### More details about the 'Plugin' system and 'DLL' files:
 
 **A Dll for anomalies detection algorythm must have the following structure:**
 
