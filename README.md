@@ -56,7 +56,7 @@ In this folder there is more documentation about the classes.
 
 ### Instalation instructions:
 1. Download the zip file of the project with all the folders.
-2. unzip the file (it's impossible to run the setup from the zip file).
+2. Unzip the file (it's impossible to run the setup from the zip file).
 3. Go to: Setup_Flight_Inspection_App\Release\ and run the setup file.
 >note: After running the setup process it may take a while to get the OS request to allow the installetion.
 
