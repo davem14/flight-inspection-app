@@ -1,4 +1,4 @@
-### More details about the 'Flight Model:
+### More details about the 'Flight Model':
 The model is the logic part of the app. It contains the data and runs it line by line. The model doesn’t recognize the other part in the app. It notifies each time a new data line is red, and each 'view model' registered to get a notification can retrieve the current line. The model can receive commands using methods it exposes. It can change the inner state by Properties. 
 
 **The methods:**
