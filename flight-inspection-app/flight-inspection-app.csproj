@@ -85,9 +85,6 @@
     <Compile Include="view\playBar.xaml.cs">
       <DependentUpon>playBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\screen.xaml.cs">
-      <DependentUpon>screen.xaml</DependentUpon>
-    </Compile>
     <Compile Include="model\Flight_Model.cs" />
     <Compile Include="vm\correlation_classes\Correlation.cs" />
     <Compile Include="vm\reading_files_classes\FileHandler.cs" />
@@ -130,10 +127,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\playBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="view\screen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,7 +178,7 @@
     <Resource Include="view\icon_player\backwards.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="view\photo_additional_settings.png" />
+    <Resource Include="view\icon_player\photo_additional_settings.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="view\icon_player\skip_backward.png" />

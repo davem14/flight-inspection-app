@@ -52,7 +52,7 @@
                         <TextBlock Grid.Row="0" Text="Instructions to move forward:" FontSize="15" FontWeight="DemiBold"/>
                         <TextBlock Grid.Row="1" Text="1. Copy your XML file into location: C:\Program Files\FlightGear[VERSION]\data\Protocol\" FontSize="13"/>
                         <TextBlock Grid.Row="2" Text="2. Copy the two lines below (in the box) and paste them into the FlightGear's settings, here:" FontSize="13"/>
-                        <Image Grid.Row="3" Source="photo_additional_settings.png" Margin="0,3,84,3"/>
+                        <Image Grid.Row="3" Source="icon_player\photo_additional_settings.png" Margin="0,3,84,3"/>
                         <TextBlock Grid.Row="4" Text="Copy from here:" FontSize="13"/>
                         <TextBox x:Name="configuration" Grid.Row="5" TextWrapping="Wrap" AcceptsReturn="True"/>
                         <TextBlock Grid.Row="6" Text="(replace XXXXXXXXXX with your XML file's name without its 'xml' extension)" FontSize="12"/>
