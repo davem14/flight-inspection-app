@@ -27,23 +27,25 @@ More details about each part of the application can be viewed at appropriate fil
     - model:
       - file "Flight_Model" - this is the model in the architecture MVVM
     - vm:
-      - file "VM_Login" - 
+      - file "VM_Login" -  the view model of the view login.
       - file "VM_PlayBar" - the view model of the view play bar.
-      - file "VM_Details" - the view model of hte view details.
-      - file "VM_Joystick" - the view model of hte view joystick.
-      - file "VM_Grahp" - the view model of hte view graph.
+      - file "VM_Details" - the view model of the view details.
+      - file "VM_Joystick" - the view model of the view joystick.
+      - file "VM_Grahp" - the view model of the view graph.
       - file "VM_Screen" - this view model is for communication with the app "FlightGear".
+      - file "VM_DLLUpload" - the view model of the DLLUpload window.
+      - file "VM_Detector" - the view model of the view detector and uses the algorythm in the uploaded DLL. 
       - folders: reading_files_classes - classes handling with files. correlation_classes, statistics - help with drawing graphs.
-      - file dll ???????
     - view:
       - file "login"
       - file "playBar"
       - file "details"
       - file "joystick"
       - file "graph"
-      - file dll ???????
-    - file "MainWindow" - 
-2. **plugin**:
+      - file "MainWindow" - 
+2. **plugins**:
+in this folder are anomaly detection algorythms as '.dll' files and 'IAD.dll' interface to be implemented by future plugins.
+
 4. **documentation**:
 In this folder there is more documentation about the classes.
 
@@ -71,12 +73,12 @@ In this folder there is more documentation about the classes.
 (replace XXXXXXXXXX with your XML file's name without its 'xml' extension)
 
 **after starting the app run:**
-1. Enter 'csv' file that contains the flight data that you want to investigate, and also 'xml' file that belongs to the csv file.
+1. Enter 'csv' file that contains the flight data that you want to investigate, and also 'xml' file that matches the csv file.
 2. Open the app 'FlightGear' and press 'Fly' and wait until the airplane will be displayed, then press 'continue'.
 >Note: It's possible running the app without the airplane's display (FlightGear app), but if you choose to do so you will not be able to start the airplane's displey during running.
 
 ### Plugin system using instructions:
-The plugins SimpleAD and MinCircAD communicate locally with an Anomaly-Detection-Server (ADserver). therefore in order to use a Dll, **ADserver must be activated on linux environment** first. The server can handle unlimited amount of clients, one client at a time, so there's no need of further activation. Server is shut down by Ctrl + C.
+The plugins SimpleAD and MinCircAD communicate locally with an Anomaly-Detection-Server (ADserver). therefore in order to use those plugins, **'ADserver' must be activated on linux environment** first. The server can handle unlimited amount of clients, one client at a time, so there's no need of further activation. Server is shut down by Ctrl + C.
 
 ## More documentation about the classes:
 - [Flight Model](documentation/Model.md)
@@ -89,7 +91,7 @@ The plugins SimpleAD and MinCircAD communicate locally with an Anomaly-Detection
 - [UML diagram](documentation/uml.pdf)
 
 ## Link to video for demo of using:
-
+https://youtu.be/RpE0JQ6Lt-4
 
 ## Developed by:
 * Yuval Tal
@@ -100,5 +102,3 @@ The plugins SimpleAD and MinCircAD communicate locally with an Anomaly-Detection
 ## Downloads:
 * FlightGear
 link: https://www.flightgear.org/
-
-* 
