@@ -57,6 +57,17 @@ In this folder there is more documentation about the classes.
 ### Instalation instructions:
 
 ### Using instructions:
+**prior to the app execution**:
+1. Copy your XML file into location: C:\Program Files\FlightGear[VERSION]\data\Protocol\"
+2. Copy the two lines below and paste them into the FlightGear's settings in 'additional settings' section:
+>--generic=socket,in,10,127.0.0.1,5400,tcp,XXXXXXXXXX
+>--fdm=null
+(replace XXXXXXXXXX with your XML file's name without its 'xml' extension)
+
+**after starting the app run:**
+1. Enter 'csv' file that contains the flight data that you want to investigate, and also 'xml' file that belongs to the csv file.
+2. Open the app 'FlightGear' and press 'Fly' and wait until the airplane will be displayed, then press 'continue'.
+>note: it's possible running the app without the airplane's display (FlightGear app), but if choose to do so you will not be able to start the airplane's displey during running.
 
 ### Plugin system using instructions:
 The plugins SimpleAD and MinCircAD communicate locally with an Anomaly-Detection-Server (ADserver). therefore in order to use a Dll, **ADserver must be activated on linux environment** first. The server can handle unlimited amount of clients, one client at a time, so there's no need of further activation. Server is shut down by Ctrl + C.
