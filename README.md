@@ -82,7 +82,7 @@ The plugins SimpleAD and MinCircAD communicate locally with an Anomaly-Detection
 
 ## More documentation about the classes:
 - [Flight Model](documentation/Model.md)
-- [Login](documentation/Login.md)
+- [Login and MainWindow](documentation/Login.md)
 - [PlayBar](documentation/PlayBar.md)
 - [Details](documentation/Details.md)
 - [Joystick](documentation/Joystick.md)
