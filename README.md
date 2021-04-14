@@ -56,12 +56,12 @@ In this folder there is more documentation about the classes.
 
 ## App installation and using instructions:
 
-### Instalation instructions:
+### Installation instructions:
 1. Download the zip file of the project with all the folders.
 2. Unzip the file (it's impossible to run the setup from the zip file).
 3. Go to: Setup_Flight_Inspection_App\Release\ and run the setup file.
 4. When the setup is done look for the app's shortcut named 'Flight_Inspection_App'.
-> Note: During running the setup process it may take a while to get the OS request to allow the installetion.
+> Note: During running the setup process it may take a while to get the OS request to allow the installation.
 
 ### Using instructions:
 **prior to the app execution**:
