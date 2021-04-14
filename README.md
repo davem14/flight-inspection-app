@@ -42,7 +42,7 @@ More details about each part of the application can be viewed at appropriate fil
       - file "details"
       - file "joystick"
       - file "graph"
-      - file "MainWindow" - 
+      - file "MainWindow"
 2. **plugins**:
 in this folder are anomaly detection algorythms as '.dll' files and 'IAD.dll' interface to be implemented by future plugins.
 
