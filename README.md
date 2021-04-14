@@ -55,6 +55,10 @@ In this folder there is more documentation about the classes.
 ## App instalation and using instructions:
 
 ### Instalation instructions:
+1. Download the zip file of the project with all the folders.
+2. unzip the file (it's impossible to run the setup from the zip file).
+3. Go to: Setup_Flight_Inspection_App\Release\ and run the setup file.
+>note: After running the setup process it may take a while to get the OS request to allow the installetion.
 
 ### Using instructions:
 **prior to the app execution**:
@@ -69,7 +73,7 @@ In this folder there is more documentation about the classes.
 **after starting the app run:**
 1. Enter 'csv' file that contains the flight data that you want to investigate, and also 'xml' file that belongs to the csv file.
 2. Open the app 'FlightGear' and press 'Fly' and wait until the airplane will be displayed, then press 'continue'.
->note: it's possible running the app without the airplane's display (FlightGear app), but if choose to do so you will not be able to start the airplane's displey during running.
+>note: it's possible running the app without the airplane's display (FlightGear app), but if you choose to do so you will not be able to start the airplane's displey during running.
 
 ### Plugin system using instructions:
 The plugins SimpleAD and MinCircAD communicate locally with an Anomaly-Detection-Server (ADserver). therefore in order to use a Dll, **ADserver must be activated on linux environment** first. The server can handle unlimited amount of clients, one client at a time, so there's no need of further activation. Server is shut down by Ctrl + C.
