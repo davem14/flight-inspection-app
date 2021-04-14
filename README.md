@@ -60,8 +60,10 @@ In this folder there is more documentation about the classes.
 **prior to the app execution**:
 1. Copy your XML file into location: C:\Program Files\FlightGear[VERSION]\data\Protocol\"
 2. Copy the two lines below and paste them into the FlightGear's settings in 'additional settings' section:
->--generic=socket,in,10,127.0.0.1,5400,tcp,XXXXXXXXXX
->--fdm=null
+```
+--generic=socket,in,10,127.0.0.1,5400,tcp,XXXXXXXXXX
+--fdm=null
+```
 (replace XXXXXXXXXX with your XML file's name without its 'xml' extension)
 
 **after starting the app run:**
