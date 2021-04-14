@@ -63,6 +63,10 @@ In this folder there is more documentation about the classes.
 4. When the setup is done look for the app's shortcut named 'Flight_Inspection_App'.
 > Note: During running the setup process it may take a while to get the OS request to allow the installetion.
 
+**Link to clone:**
+```
+git@github.com:davem14/flight-inspection-app.git
+```
 
 ### Using instructions:
 **prior to the app execution**:
