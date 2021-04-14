@@ -76,7 +76,7 @@ In this folder there is more documentation about the classes.
 **after starting the app run:**
 1. Enter 'csv' file that contains the flight data that you want to investigate, and also 'xml' file that matches the csv file.
 2. Open the app 'FlightGear' and press 'Fly' and wait until the airplane will be displayed, then press 'continue'.
->Note: It's possible running the app without the airplane's display (FlightGear app), but if you choose to do so you will not be able to start the airplane's displey during running.
+>Note: It's possible running the app without the airplane's display (FlightGear app), but if you choose to do so you will not be able to start the airplane's display during running.
 
 ### Plugin system using instructions:
 The plugins SimpleAD and MinCircAD communicate locally with an Anomaly-Detection-Server (ADserver). therefore in order to use those plugins, **'ADserver' must be activated on linux environment** first. The server can handle unlimited amount of clients, one client at a time, so there's no need of further activation. Server is shut down by Ctrl + C.
