@@ -88,7 +88,7 @@ The plugins SimpleAD and MinCircAD communicate locally with an Anomaly-Detection
 - [Joystick](documentation/Joystick.md)
 - [Graph](documentation/Graph.md)
 - [DLL plugin](documentation/Dll.md)
-- [UML diagram](documentation/uml.pdf)
+- [UML diagram](documentation/UML.png)
 
 ## Link to video for demo of using:
 https://youtu.be/RpE0JQ6Lt-4
