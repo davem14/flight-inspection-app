@@ -1,4 +1,4 @@
-To present the details of the flight, we created a several classes.
+To present the details of the flight, we created 2 classes. 
 view.details class:
  
 The view.details class is in the view part of the project and is used to present the gui data on the screen.
