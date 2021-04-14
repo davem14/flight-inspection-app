@@ -61,6 +61,7 @@ In this folder there is more documentation about the classes.
 2. Unzip the file (it's impossible to run the setup from the zip file).
 3. Go to: Setup_Flight_Inspection_App\Release\ and run the setup file.
 >Note: After running the setup process it may take a while to get the OS request to allow the installetion.
+4.When the setup is done look for the app's shortcut named 'Flight_Inspection_App'.
 
 ### Using instructions:
 **prior to the app execution**:
