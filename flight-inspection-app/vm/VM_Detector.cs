@@ -89,20 +89,23 @@ namespace flight_inspection_app.vm
         public void detect()
         {
             // choose which DLL to load
-            var assembly = Assembly.LoadFile(dllWindow.pathDLL.Text);
-            var theType = assembly.GetType("AD_plugin.AD");
-            var AD = Activator.CreateInstance(theType);
+            try
+            {
+                var assembly = Assembly.LoadFile(dllWindow.pathDLL.Text);
+                var theType = assembly.GetType("AD_plugin.AD");
+                var AD = Activator.CreateInstance(theType);
 
-            var detect = theType.GetMethod("Detect");
-            var anoms = detect.Invoke(AD, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, xmlHandler.getList().Count });
-            anomoalies = (List<List<int>>)anoms; // category, begin, end
-            anomaliesLen = anomoalies.Count();
-            anomalyIdx = 0;
+                var detect = theType.GetMethod("Detect");
+                var anoms = detect.Invoke(AD, new object[] { dllWindow.pathCSV.Text, anomalyFlightCSVPath, xmlHandler.getList().Count });
+                anomoalies = (List<List<int>>)anoms; // category, begin, end
+                anomaliesLen = anomoalies.Count();
+                anomalyIdx = 0;
 
-            var GNM = theType.GetMethod("GetNormalModel");
-            var dict = GNM.Invoke(AD, null);
-            //featuresThresholdEquations = (Dictionary<int, List<Func<double, double>>>)dict;
-            model.Categories = (Dictionary<int, List<Func<double, double>>>)dict;
+                var GNM = theType.GetMethod("GetNormalModel");
+                var dict = GNM.Invoke(AD, null);
+                //featuresThresholdEquations = (Dictionary<int, List<Func<double, double>>>)dict;
+                model.Categories = (Dictionary<int, List<Func<double, double>>>)dict;
+            } catch { Console.WriteLine("dll error"); }
             if (anomaliesLen == 0)
                 EnablePlay = false;
             else
