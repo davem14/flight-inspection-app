@@ -12,7 +12,7 @@ namespace AD_plugin
   }
 }
 ```
-(functions implement interface 'IAD', available as '.dll' file in directory 'plugins')
+**(functions implement interface 'IAD', available as '.dll' file in directory 'plugins')**
 
 Dll must reffer to a feature by its index, therefore 'Detect' recieves the number of properties. 
 
